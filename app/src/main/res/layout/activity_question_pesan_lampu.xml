@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuestionPesanLampuActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        app:cardBackgroundColor="@color/blue"
+        app:cardCornerRadius="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textJudulVideo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Judul Soal"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#4DFFEFBE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:id="@+id/youtube_player_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="true"
+                app:enableAutomaticInitialization="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:videoId="cnCZXJRkYYI" >
+
+            </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
+
+            <TextView
+                android:id="@+id/textSoal1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/poppins"
+                android:text="Soal Lorem Ipsum"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/youtube_player_view" />
+
+            <ImageView
+                android:id="@+id/imageGambarIlustrasi"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                app:layout_constraintEnd_toEndOf="@+id/textSoal1"
+                app:layout_constraintStart_toStartOf="@+id/textSoal1"
+                app:layout_constraintTop_toBottomOf="@+id/textSoal1"
+                app:srcCompat="@drawable/standart_pesanlampu" />
+
+            <TextView
+                android:id="@+id/textSoal2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:text="TextView"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/textSoal1"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textSoal1"
+                app:layout_constraintTop_toBottomOf="@+id/imageGambarIlustrasi" />
+
+            <ImageView
+                android:id="@+id/imageViewPertanyaan"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                app:layout_constraintEnd_toEndOf="@+id/textSoal2"
+                app:layout_constraintStart_toStartOf="@+id/textSoal2"
+                app:layout_constraintTop_toBottomOf="@+id/textSoal2"
+                app:srcCompat="@drawable/standart_pesanlampupart1" />
+
+            <TextView
+                android:id="@+id/textSoal3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:text="TextView"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/textSoal2"
+                app:layout_constraintStart_toStartOf="@+id/textSoal2"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewPertanyaan" />
+
+            <ImageButton
+                android:id="@+id/imageButtonA"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="@+id/textSoal3"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textSoal3"
+                app:layout_constraintTop_toBottomOf="@+id/textSoal3"
+                app:srcCompat="@drawable/standart_pesanlampupart1_pilih_a" />
+
+            <ImageButton
+                android:id="@+id/imageButtonB"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="8dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="@+id/imageButtonA"
+                app:layout_constraintStart_toStartOf="@+id/imageButtonA"
+                app:layout_constraintTop_toBottomOf="@+id/imageButtonA"
+                app:srcCompat="@drawable/standart_pesanlampupart1_pilih_b" />
+
+            <ImageButton
+                android:id="@+id/imageButtonC"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="8dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="@+id/imageButtonB"
+                app:layout_constraintStart_toStartOf="@+id/imageButtonB"
+                app:layout_constraintTop_toBottomOf="@+id/imageButtonB"
+                app:srcCompat="@drawable/standart_pesanlampupart1_pilih_b" />
+
+            <Button
+                android:id="@+id/buttonCekHasil"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Cek Hasil"
+                android:textSize="16sp"
+                app:cornerRadius="40dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/imageButtonC"
+                app:layout_constraintStart_toStartOf="@+id/imageButtonC"
+                app:layout_constraintTop_toBottomOf="@+id/imageButtonC" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

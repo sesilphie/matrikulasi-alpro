@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StandartDetailActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        app:cardBackgroundColor="@color/blue"
+        app:cardCornerRadius="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textStandart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Standart"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FFEFBE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/buttonBelanjaTepung"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Belanja Tepung"
+                android:textSize="20sp"
+                app:cornerRadius="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/buttonAlatMusik_part1"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Alat Musik part 1"
+                android:textSize="20sp"
+                app:cornerRadius="15dp"
+                app:layout_constraintEnd_toEndOf="@+id/buttonBelanjaTepung"
+                app:layout_constraintStart_toStartOf="@+id/buttonBelanjaTepung"
+                app:layout_constraintTop_toBottomOf="@+id/buttonBelanjaTepung" />
+
+            <Button
+                android:id="@+id/buttonAlatMusik_part2"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Alat Musik part 2"
+                android:textSize="20sp"
+                app:cornerRadius="15dp"
+                app:layout_constraintEnd_toEndOf="@+id/buttonAlatMusik_part1"
+                app:layout_constraintStart_toStartOf="@+id/buttonAlatMusik_part1"
+                app:layout_constraintTop_toBottomOf="@+id/buttonAlatMusik_part1" />
+
+            <Button
+                android:id="@+id/buttonPesanLampu_part1"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Pesan Lampu part 1"
+                android:textSize="20sp"
+                app:cornerRadius="15dp"
+                app:layout_constraintEnd_toEndOf="@+id/buttonAlatMusik_part2"
+                app:layout_constraintStart_toStartOf="@+id/buttonAlatMusik_part2"
+                app:layout_constraintTop_toBottomOf="@+id/buttonAlatMusik_part2" />
+
+            <Button
+                android:id="@+id/buttonPesanLampu_part2"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Pesan Lampu part 2"
+                android:textSize="20sp"
+                app:cornerRadius="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/buttonPesanLampu_part1"
+                app:layout_constraintStart_toStartOf="@+id/buttonPesanLampu_part1"
+                app:layout_constraintTop_toBottomOf="@+id/buttonPesanLampu_part1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

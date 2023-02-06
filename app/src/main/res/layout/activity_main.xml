@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFEFBE"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFEFBE"
+        tools:layout_editor_absoluteX="-196dp"
+        tools:layout_editor_absoluteY="-100dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textKeterangan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Yuk mengasah logikamu!"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/textNamaUsers"
+                app:layout_constraintStart_toStartOf="@+id/textHalo"
+                app:layout_constraintTop_toBottomOf="@+id/textHalo" />
+
+            <TextView
+                android:id="@+id/textHalo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Halo, "
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textNamaUsers"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Users"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textHalo"
+                app:layout_constraintTop_toTopOf="@+id/textHalo" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/CardViewIntro"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="16dp"
+                android:clickable="true"
+                app:cardBackgroundColor="#283777"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:layout_constraintEnd_toEndOf="@+id/textKeterangan"
+                app:layout_constraintStart_toStartOf="@+id/textKeterangan"
+                app:layout_constraintTop_toBottomOf="@+id/textKeterangan">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textViewJudulIntro"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="118dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Introduction"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textViewPenjelasanIntro"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:text="Bagian ini berisi pengenalan latihan soal logika sederhana"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="@+id/textViewJudulIntro"
+                        app:layout_constraintStart_toStartOf="@+id/textViewJudulIntro"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewJudulIntro" />
+
+                    <ProgressBar
+                        android:id="@+id/ProgressBarLvl_Intro"
+                        style="@style/Widget.AppCompat.ProgressBar"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="24dp"
+                        android:foregroundGravity="center"
+                        android:indeterminateOnly="false"
+                        android:progressDrawable="@drawable/circle"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textViewJudulIntro"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        tools:progress="30" />
+
+                    <TextView
+                        android:id="@+id/textProgressBar_Intro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="0%"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/ProgressBarLvl_Intro"
+                        app:layout_constraintEnd_toEndOf="@+id/ProgressBarLvl_Intro"
+                        app:layout_constraintStart_toStartOf="@+id/ProgressBarLvl_Intro"
+                        app:layout_constraintTop_toTopOf="@+id/ProgressBarLvl_Intro" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/CardViewBenginner"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="16dp"
+                android:clickable="true"
+                app:cardBackgroundColor="#283777"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:layout_constraintEnd_toEndOf="@+id/CardViewIntro"
+                app:layout_constraintStart_toStartOf="@+id/CardViewIntro"
+                app:layout_constraintTop_toBottomOf="@+id/CardViewIntro">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textViewJudulBeginner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="118dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Beginner"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textViewPenjelasanBegin"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:text="Bagian ini berisi kumpulan latihan soal logika tingkat mudah"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="@+id/textViewJudulBeginner"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/textViewJudulBeginner"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewJudulBeginner" />
+
+                    <ProgressBar
+                        android:id="@+id/ProgressBarLvl_beginner"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="24dp"
+                        android:indeterminateOnly="false"
+                        android:progressDrawable="@drawable/circle"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textViewPenjelasanBegin"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:progress="50" />
+
+                    <TextView
+                        android:id="@+id/textProgressBarLvl_Beginner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="0%"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/ProgressBarLvl_beginner"
+                        app:layout_constraintEnd_toEndOf="@+id/ProgressBarLvl_beginner"
+                        app:layout_constraintStart_toStartOf="@+id/ProgressBarLvl_beginner"
+                        app:layout_constraintTop_toTopOf="@+id/ProgressBarLvl_beginner" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/CardViewStandart"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="16dp"
+                android:clickable="true"
+                app:cardBackgroundColor="#283777"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:layout_constraintEnd_toEndOf="@+id/CardViewIntro"
+                app:layout_constraintStart_toStartOf="@+id/CardViewIntro"
+                app:layout_constraintTop_toBottomOf="@+id/CardViewBenginner">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textViewJudulStandart"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="118dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Standart"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textViewPenjelasanStandart"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:text="Bagian ini berisi kumpulan latihan soal logika tingkat menengah"
+                        android:textColor="#FFFFFF"
+                        app:layout_constraintEnd_toEndOf="@+id/textViewJudulStandart"
+                        app:layout_constraintStart_toStartOf="@+id/textViewJudulStandart"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewJudulStandart" />
+
+                    <ProgressBar
+                        android:id="@+id/ProgressBarLvl_Standart"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="24dp"
+                        android:indeterminateOnly="false"
+                        android:progressDrawable="@drawable/circle"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textViewJudulStandart"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:progress="80" />
+
+                    <TextView
+                        android:id="@+id/textProgressBarLvl_Standart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="0%"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/ProgressBarLvl_Standart"
+                        app:layout_constraintEnd_toEndOf="@+id/ProgressBarLvl_Standart"
+                        app:layout_constraintStart_toStartOf="@+id/ProgressBarLvl_Standart"
+                        app:layout_constraintTop_toTopOf="@+id/ProgressBarLvl_Standart" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/CardViewExpert"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:clickable="true"
+                app:cardBackgroundColor="#283777"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/CardViewIntro"
+                app:layout_constraintStart_toStartOf="@+id/CardViewIntro"
+                app:layout_constraintTop_toBottomOf="@+id/CardViewStandart">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textViewJudulExpert"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="118dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Expert"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:text="Bagian ini berisi kumpulan latihan soal logika tingkat sulit"
+                        android:textColor="#FFFFFF"
+                        app:layout_constraintEnd_toEndOf="@+id/textViewJudulExpert"
+                        app:layout_constraintStart_toStartOf="@+id/textViewJudulExpert"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewJudulExpert" />
+
+                    <ProgressBar
+                        android:id="@+id/ProgressBarLvl_Expert"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="24dp"
+                        android:indeterminateOnly="false"
+                        android:progressDrawable="@drawable/circle"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textViewJudulExpert"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:progress="60" />
+
+                    <TextView
+                        android:id="@+id/textProgressBarLvl_Expert"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="0%"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+
+                        app:layout_constraintBottom_toBottomOf="@+id/ProgressBarLvl_Expert"
+                        app:layout_constraintEnd_toEndOf="@+id/ProgressBarLvl_Expert"
+                        app:layout_constraintStart_toStartOf="@+id/ProgressBarLvl_Expert"
+                        app:layout_constraintTop_toTopOf="@+id/ProgressBarLvl_Expert" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
