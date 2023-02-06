@@ -38,5 +38,17 @@ class IntroductionDetailActivity : AppCompatActivity() {
             intent.putExtra(EXTRA_NAMASOAL, namaSoal)
             startActivity(intent)
         }
+        binding.buttonHasilUlanganHarian.setOnClickListener {
+            namaSoal = "Hasil Ulangan Harian"
+            val intent = Intent(this, QuestionUlanganAndPromosiActivity::class.java)
+            intent.putExtra(EXTRA_NAMASOAL, namaSoal)
+            startActivity(intent)
+        }
+        binding.buttonMainanBaruPart2.setOnClickListener {
+            namaSoal = "Mainan Baru part 2"
+            val intent = Intent(this, QuestionMainanBaruPart2Actvity::class.java)
+            intent.putExtra(EXTRA_NAMASOAL, namaSoal)
+            startActivity(intent)
+        }
     }
 }

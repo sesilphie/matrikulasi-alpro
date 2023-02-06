@@ -45,7 +45,7 @@ class QuestionLabirinActivity : AppCompatActivity() {
 
         binding.youtubePlayerView.initialize(listener, options)
 
-        for (question in GlobalData.QuestionPesanLampuAndLabirin) {
+        for (question in GlobalData.questionPesanLampuandLabirin) {
             if (namaSoal == question.namaSoal) {
                 binding.imageGambarIlustrasi1.setImageResource(question.idGambar1)
                 binding.imageGambarIlustrasi2.setImageResource(question.idGambar2)

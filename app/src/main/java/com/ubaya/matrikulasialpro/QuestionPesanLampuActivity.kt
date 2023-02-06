@@ -22,9 +22,9 @@ class QuestionPesanLampuActivity : AppCompatActivity() {
         binding = ActivityQuestionPesanLampuBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.imageButtonA.setBackgroundColor(Color.parseColor("#7997C9"))
-        binding.imageButtonB.setBackgroundColor(Color.parseColor("#7997C9"))
-        binding.imageButtonC.setBackgroundColor(Color.parseColor("#7997C9"))
+        binding.imageButtonA.setBackgroundColor(Color.TRANSPARENT)
+        binding.imageButtonB.setBackgroundColor(Color.TRANSPARENT)
+        binding.imageButtonC.setBackgroundColor(Color.TRANSPARENT)
 
         val namaSoal = intent.getStringExtra(IntroductionDetailActivity.EXTRA_NAMASOAL)
         binding.textJudulVideo.text = namaSoal
@@ -56,7 +56,7 @@ class QuestionPesanLampuActivity : AppCompatActivity() {
 
         binding.youtubePlayerView.initialize(listener, options)
 
-        for (question in GlobalData.QuestionPesanLampuAndLabirin) {
+        for (question in GlobalData.questionPesanLampuandLabirin) {
             if (namaSoal == question.namaSoal) {
                 if(namaSoal == "Pesan Lampu part 1"){
                     binding.imageViewPertanyaan.setImageResource(question.idGambar2)
@@ -86,21 +86,21 @@ class QuestionPesanLampuActivity : AppCompatActivity() {
 
         binding.imageButtonA.setOnClickListener {
             binding.imageButtonA.setBackgroundColor(Color.parseColor("#283777"))
-            binding.imageButtonB.setBackgroundColor(Color.parseColor("#7997C9"))
-            binding.imageButtonC.setBackgroundColor(Color.parseColor("#7997C9"))
+            binding.imageButtonB.setBackgroundColor(Color.TRANSPARENT)
+            binding.imageButtonC.setBackgroundColor(Color.TRANSPARENT)
 
             pilihanUser = GlobalData.pilihanA
         }
         binding.imageButtonB.setOnClickListener {
-            binding.imageButtonA.setBackgroundColor(Color.parseColor("#7997C9"))
+            binding.imageButtonA.setBackgroundColor(Color.TRANSPARENT)
             binding.imageButtonB.setBackgroundColor(Color.parseColor("#283777"))
-            binding.imageButtonC.setBackgroundColor(Color.parseColor("#7997C9"))
+            binding.imageButtonC.setBackgroundColor(Color.TRANSPARENT)
 
             pilihanUser = GlobalData.pilihanB
         }
         binding.imageButtonC.setOnClickListener {
-            binding.imageButtonA.setBackgroundColor(Color.parseColor("#7997C9"))
-            binding.imageButtonB.setBackgroundColor(Color.parseColor("#7997C9"))
+            binding.imageButtonA.setBackgroundColor(Color.TRANSPARENT)
+            binding.imageButtonB.setBackgroundColor(Color.TRANSPARENT)
             binding.imageButtonC.setBackgroundColor(Color.parseColor("#283777"))
 
             pilihanUser = GlobalData.pilihanC

@@ -129,7 +129,7 @@ object GlobalData {
             "O atau Q", "L atau P", "M atau N", "Salah satu di antara M, N, O, atau Q",
             "O atau Q")
             )
-    val QuestionPesanLampuAndLabirin = arrayOf(
+    val questionPesanLampuandLabirin = arrayOf(
         QuestionPesanLampuAndLabirin("Pesan Lampu part 1",
             "Mawar mengirimkan pesan kepada temannya menggunakan 7 lampu, setiap lampu bisa nyala dan padam. Mawar menggunakan 5 lampu pertama untuk " +
                     "menunjukkan huruf yang dikirimkan. Untuk menunjukkan bahwa pesan itu benar, Mawar memakai 2 lampu sisanya sebagai berikut: \n " +
@@ -212,6 +212,83 @@ object GlobalData {
             "",
             "A1 B1 C1 C2 D2 D3 E3 E4 E5", "A1 B1 C1 C2 C3 D3 E3 E4 E5", "A1 B1 C1 C2 D2 D3 D4 D5 E5", "A1 B1 C1 C2 C3 C4 C5 D5 E5",
             "A1 B1 C1 C2 D2 D3 E3 E4 E5")
+    )
+    val questionMobilPengangkut = MobilPengangkut(
+        "Mobil Pengangkut Barang",
+        "Ada sebuah mobil pengangkut barang yang hanya mengangkut 4 warna balok.",
+        R.drawable.expert_mobilpengangkut,
+        "Mobil pengangkut barang mengikuti instruksi sebagai berikut:\n" +
+                "-  Mulai dengan mobil pengangkut barang dalam keadaan kosong\n" +
+                "-  Ambil 2 balok dengan warna yang sama\n" +
+                "-  Ambil 1 balok dengan warna yang berbeda\n" +
+                "-  Jika jumlah balok warna yang diangkut sebanyak 6 balok, berhenti. Jika belum, kembali ke langkah 2.\n \n" +
+                "Manakah tumpukan balok yang mengikuti instruksi dengan benar?",
+        R.drawable.expert_mobilpengangkut_pilihan_a,
+        R.drawable.expert_mobilpengangkut_pilihan_b,
+        R.drawable.expert_mobilpengangkut_pilihan_c,
+        R.drawable.expert_mobilpengangkut_pilihan_d,
+        R.drawable.expert_mobilpengangkut_pilihan_a
+    )
+    val questionUlanganAndPromosi = arrayOf(
+        UlanganAndPromosi(
+        "Hasil Ulangan Harian",
+        "Ana, Ani, Ina, Nia, Ian adalah teman sekelas. Mereka baru saja menerima hasil ulangan harian. Diketahui pernyataan sebagai berikut:\n" +
+                "Nilai Ana lebih rendah dari Nia\n" +
+                "Nilai Ana lebih tinggi dari Ina\n" +
+                "Nilai Ani lebih tinggi dari Ian\n" +
+                "Nilai Ina lebih tinggi dari Ian\n" +
+                "Nilai Ani lebih tinggi dari Ana\n" +
+                "Nilai Ani lebih rendah dari Nia\n" +
+                "\n" +
+                "Aturlah posisi nama siswa dari nilai tertinggi ke rendah!\n",
+        R.drawable.intro_ulanganharian,
+        R.drawable.intro_ulanganharian_ana,
+        R.drawable.intro_ulanganharian_ani,
+        R.drawable.intro_ulanganharian_ian,
+        R.drawable.intro_ulanganharian_ina,
+        R.drawable.intro_ulanganharian_nia,
+        R.drawable.intro_ulanganharian_nia.toString() + R.drawable.intro_ulanganharian_ani.toString() + R.drawable.intro_ulanganharian_ana.toString() +
+                R.drawable.intro_ulanganharian_ina.toString() + R.drawable.intro_ulanganharian_ian.toString()),
+        UlanganAndPromosi(
+            "Promosi Minuman",
+            "Seorang salesman atau petugas pemasaran suatu perusahaan minuman harus mengunjungi 5 warung untuk memperkenalkan produk minuman terbaru. " +
+                    "Kelima warung tersebut adalah: P, Q, R, S, T. Dia hanya akan mengunjungi masing-masing satu kali saja, satu warung per hari, " +
+                    "senin sampai jumat dengan aturan berikut: \n " +
+                    "-  Tidak boleh mengunjungi warung R pada hari senin\n" +
+                    "-  Harus mengunjungi warung P sebelum mengunjungi warung S\n" +
+                    "-  Harus mengunjungi warung Q sebelum mengunjungi warung T\n" +
+                    "\n" +
+                    "Bantulah salesman untuk mengatur jadwal kunjungan dengan mengikuti aturan di atas! dari hari senin hingga jumat",
+            R.drawable.expert_promosiminuman,
+            R.drawable.expert_promosiminuman_p,
+            R.drawable.expert_promosiminuman_q,
+            R.drawable.expert_promosiminuman_r,
+            R.drawable.expert_promosiminuman_s,
+            R.drawable.expert_promosiminuman_t,
+            R.drawable.expert_promosiminuman_p.toString() + R.drawable.expert_promosiminuman_s.toString() + R.drawable.expert_promosiminuman_r.toString() +
+                    R.drawable.expert_promosiminuman_q.toString() + R.drawable.expert_promosiminuman_t.toString())
+    )
+
+    val questionMainanBaruPart2 = UlanganAndPromosi(
+        "Mainan Baru part 2",
+        "Joko baru saja membeli mainan bola baru. Mainan itu terdiri dari 9 potongan angka-angka yang berwarna-warni. " +
+                "Dari hasil pengamatan dinyatakan informasi berikut: \n" +
+                "-  Sebuah angka berwarna jingga dan ada masing-masing dua angka yang berwarna merah, hijau, kuning, dan biru.\n" +
+                "-  Angka-angka yang berwarna merah, adalah angka yang berurutan.\n" +
+                "-  Angka 4 berwarna hijau.\n" +
+                "-  Dua buah angka yang berwarna biru bukanlah angka yang berurutan.\n" +
+                "-  Angka 1 dan 9 berwarna kuning.\n" +
+                "-  Angka berwarna jingga bukanlah angka yang berurutan langsung dengan salah satu angka yang berwarna hijau. \n \n" +
+                "Bantulah Joko untuk mengurutkan angka berwarna ini jika angka 3 berwarna merah dan angka 6 berwarna hijau!. " +
+                "Kamu bisa menekan tombol lingkaran 2, 5, 7, dan 8 untuk mengubah warnanya!",
+        0,
+        R.drawable.intro_mainanbaru_2_putih,
+        R.drawable.intro_mainanbaru_5_putih,
+        R.drawable.intro_mainanbaru_7_putih,
+        R.drawable.intro_mainanbaru_8_putih,
+        0,
+        R.drawable.intro_mainanbaru_2_merah.toString() + R.drawable.intro_mainanbaru_5_biru.toString() +
+                R.drawable.intro_mainanbaru_7_biru.toString() + R.drawable.intro_mainanbaru_8_orange.toString()
     )
 
     var pilihanA = ""

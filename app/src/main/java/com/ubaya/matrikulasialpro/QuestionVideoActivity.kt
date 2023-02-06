@@ -83,7 +83,7 @@ class QuestionVideoActivity : AppCompatActivity() {
             binding.buttonD.setBackgroundColor(Color.parseColor("#7997C9"))
 
             pilihanUser = GlobalData.pilihanA
-            Toast.makeText(this, pilihanUser, Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, pilihanUser, Toast.LENGTH_SHORT).show()
         }
         binding.buttonB.setOnClickListener {
             binding.buttonA.setBackgroundColor(Color.parseColor("#7997C9"))
@@ -92,7 +92,7 @@ class QuestionVideoActivity : AppCompatActivity() {
             binding.buttonD.setBackgroundColor(Color.parseColor("#7997C9"))
 
             pilihanUser = GlobalData.pilihanB
-            Toast.makeText(this, pilihanUser, Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, pilihanUser, Toast.LENGTH_SHORT).show()
         }
         binding.buttonC.setOnClickListener {
             binding.buttonA.setBackgroundColor(Color.parseColor("#7997C9"))
@@ -101,7 +101,7 @@ class QuestionVideoActivity : AppCompatActivity() {
             binding.buttonD.setBackgroundColor(Color.parseColor("#7997C9"))
 
             pilihanUser = GlobalData.pilihanC
-            Toast.makeText(this, pilihanUser, Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, pilihanUser, Toast.LENGTH_SHORT).show()
         }
         binding.buttonD.setOnClickListener {
             binding.buttonA.setBackgroundColor(Color.parseColor("#7997C9"))
@@ -110,7 +110,7 @@ class QuestionVideoActivity : AppCompatActivity() {
             binding.buttonD.setBackgroundColor(Color.parseColor("#283777"))
 
             pilihanUser = GlobalData.pilihanD
-            Toast.makeText(this, pilihanUser, Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, pilihanUser, Toast.LENGTH_SHORT).show()
         }
         binding.buttonCekHasil.setOnClickListener {
             if (GlobalData.jawabanSoal == pilihanUser) {

@@ -12,13 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MatrikulasiAlpro">
         <activity
+            android:name=".QuestionMainanBaruPart2Actvity"
+            android:exported="true" />
+        <activity
+            android:name=".QuestionUlanganAndPromosiActivity"
+            android:exported="true" />
+        <activity
+            android:name=".QuestionMobilPengangkutBarangActivity"
+            android:exported="true" />
+        <activity
             android:name=".QuestionKatakAndRobotActivity"
             android:exported="true" />
         <activity
             android:name=".QuestionLabirinActivity"
-            android:exported="true" />
-        <activity
-            android:name=".QuestionLabitinActivity"
             android:exported="true" />
         <activity
             android:name=".QuestionPesanLampuActivity"
@@ -46,15 +52,17 @@
             android:exported="true" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+
         </activity>
 
         <meta-data

@@ -56,5 +56,18 @@ class ExpertDetailActivity : AppCompatActivity() {
             intent.putExtra(EXTRA_NAMASOAL, namaSoal)
             startActivity(intent)
         }
+
+        binding.buttonMobilPengangkutBarang.setOnClickListener {
+            namaSoal = "Mobil Pengangkut Barang"
+            val intent = Intent(this, QuestionMobilPengangkutBarangActivity::class.java)
+            intent.putExtra(EXTRA_NAMASOAL, namaSoal)
+            startActivity(intent)
+        }
+        binding.buttonPromosiMinuman.setOnClickListener {
+            namaSoal = "Promosi Minuman"
+            val intent = Intent(this, QuestionUlanganAndPromosiActivity::class.java)
+            intent.putExtra(EXTRA_NAMASOAL, namaSoal)
+            startActivity(intent)
+        }
     }
 }

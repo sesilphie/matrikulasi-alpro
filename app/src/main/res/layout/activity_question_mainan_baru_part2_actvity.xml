@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuestionPesanLampuActivity">
+    tools:context=".QuestionMainanBaruPart2Actvity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -21,7 +21,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textJudulVideo"
+                android:id="@+id/textJudulSoal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -47,7 +47,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -74,96 +73,102 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:videoId="cnCZXJRkYYI" >
-
-            </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
+                app:videoId="cnCZXJRkYYI" />
 
             <TextView
-                android:id="@+id/textSoal1"
+                android:id="@+id/textSoal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="16dp"
                 android:fontFamily="@font/poppins"
                 android:text="Soal Lorem Ipsum"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/youtube_player_view" />
 
-            <ImageView
-                android:id="@+id/imageGambarIlustrasi"
-                android:layout_width="0dp"
-                android:layout_height="120dp"
-                app:layout_constraintEnd_toEndOf="@+id/textSoal1"
-                app:layout_constraintStart_toStartOf="@+id/textSoal1"
-                app:layout_constraintTop_toBottomOf="@+id/textSoal1"
-                app:srcCompat="@drawable/standart_pesanlampu" />
-
-            <TextView
-                android:id="@+id/textSoal2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins"
-                android:text="TextView"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="@+id/textSoal1"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/textSoal1"
-                app:layout_constraintTop_toBottomOf="@+id/imageGambarIlustrasi" />
-
-            <ImageView
-                android:id="@+id/imageViewPertanyaan"
-                android:layout_width="0dp"
-                android:layout_height="120dp"
-                app:layout_constraintEnd_toEndOf="@+id/textSoal2"
-                app:layout_constraintStart_toStartOf="@+id/textSoal2"
-                app:layout_constraintTop_toBottomOf="@+id/textSoal2"
-                app:srcCompat="@drawable/standart_pesanlampupart1" />
-
-            <TextView
-                android:id="@+id/textSoal3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins"
-                android:text="TextView"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="@+id/textSoal2"
-                app:layout_constraintStart_toStartOf="@+id/textSoal2"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewPertanyaan" />
-
             <ImageButton
-                android:id="@+id/imageButtonA"
-                android:layout_width="360dp"
-                android:layout_height="100dp"
+                android:id="@+id/imageButton1"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_marginTop="8dp"
                 android:scaleType="centerCrop"
-                app:layout_constraintEnd_toEndOf="@+id/textSoal3"
-                app:layout_constraintStart_toStartOf="@+id/textSoal3"
-                app:layout_constraintTop_toBottomOf="@+id/textSoal3"
-                app:srcCompat="@drawable/standart_pesanlampupart1_pilih_a" />
+                app:layout_constraintStart_toStartOf="@+id/textSoal"
+                app:layout_constraintTop_toBottomOf="@+id/textSoal"
+                app:srcCompat="@drawable/intro_mainanbaru_1" />
 
             <ImageButton
-                android:id="@+id/imageButtonB"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="8dp"
+                android:id="@+id/imageButton2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:scaleType="centerCrop"
-                app:layout_constraintEnd_toEndOf="@+id/imageButtonA"
-                app:layout_constraintStart_toStartOf="@+id/imageButtonA"
-                app:layout_constraintTop_toBottomOf="@+id/imageButtonA"
-                app:srcCompat="@drawable/standart_pesanlampupart1_pilih_b" />
+                app:layout_constraintStart_toEndOf="@+id/imageButton1"
+                app:layout_constraintTop_toTopOf="@+id/imageButton1"
+                app:srcCompat="@drawable/expert_promosiminuman_p" />
 
             <ImageButton
-                android:id="@+id/imageButtonC"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="8dp"
+                android:id="@+id/imageButton3"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:scaleType="centerCrop"
-                app:layout_constraintEnd_toEndOf="@+id/imageButtonB"
-                app:layout_constraintStart_toStartOf="@+id/imageButtonB"
-                app:layout_constraintTop_toBottomOf="@+id/imageButtonB"
-                app:srcCompat="@drawable/standart_pesanlampupart1_pilih_b" />
+                app:layout_constraintStart_toEndOf="@+id/imageButton2"
+                app:layout_constraintTop_toTopOf="@+id/imageButton2"
+                app:srcCompat="@drawable/expert_promosiminuman_p" />
+
+            <ImageButton
+                android:id="@+id/imageButton4"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toEndOf="@+id/imageButton3"
+                app:layout_constraintTop_toTopOf="@+id/imageButton3"
+                app:srcCompat="@drawable/expert_promosiminuman_p" />
+
+            <ImageButton
+                android:id="@+id/imageButton5"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toEndOf="@+id/imageButton4"
+                app:layout_constraintTop_toTopOf="@+id/imageButton4"
+                app:srcCompat="@drawable/expert_promosiminuman_p" />
+
+            <ImageButton
+                android:id="@+id/imageButton6"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="@+id/imageButton1"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton1"
+                app:srcCompat="@drawable/expert_promosiminuman_p" />
+
+            <ImageButton
+                android:id="@+id/imageButton7"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toEndOf="@+id/imageButton6"
+                app:layout_constraintTop_toTopOf="@+id/imageButton6"
+                app:srcCompat="@drawable/expert_promosiminuman_p" />
+
+            <ImageButton
+                android:id="@+id/imageButton8"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toEndOf="@+id/imageButton7"
+                app:layout_constraintTop_toTopOf="@+id/imageButton7"
+                app:srcCompat="@drawable/expert_promosiminuman_p" />
+
+            <ImageButton
+                android:id="@+id/imageButton9"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toEndOf="@+id/imageButton8"
+                app:layout_constraintTop_toTopOf="@+id/imageButton8"
+                app:srcCompat="@drawable/expert_promosiminuman_p" />
 
             <Button
                 android:id="@+id/buttonCekHasil"
@@ -175,9 +180,9 @@
                 android:textSize="16sp"
                 app:cornerRadius="40dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/imageViewPertanyaan"
-                app:layout_constraintStart_toStartOf="@+id/textSoal3"
-                app:layout_constraintTop_toBottomOf="@+id/imageButtonC" />
+                app:layout_constraintEnd_toEndOf="@+id/textSoal"
+                app:layout_constraintStart_toStartOf="@+id/textSoal"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton6" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
