@@ -9,8 +9,13 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 
 import android.R
+import android.app.Dialog
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.provider.Settings
+import android.view.Window
+import android.widget.Button
+import android.widget.TextView
 
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.DefaultPlayerUiController
@@ -19,12 +24,13 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFram
 class QuestionVideoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityQuestionVideoBinding
 
+    var namaSoal = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuestionVideoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val namaSoal = intent.getStringExtra(IntroductionDetailActivity.EXTRA_NAMASOAL)
+        namaSoal = intent.getStringExtra(IntroductionDetailActivity.EXTRA_NAMASOAL).toString()
         binding.textJudulVideo.text = namaSoal
 
         var pilihanUser = ""
@@ -116,8 +122,29 @@ class QuestionVideoActivity : AppCompatActivity() {
             if (GlobalData.jawabanSoal == pilihanUser) {
                 Toast.makeText(this, "KAMU BENAR", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "KAMU SALAH", Toast.LENGTH_SHORT).show()
+                ShowDialogSalah()
+                //Toast.makeText(this, "KAMU SALAH", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+    fun ShowDialogSalah(){
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature( Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(com.ubaya.matrikulasialpro.R.layout.dialog_salah_layout)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        val buttonCobaLagi = dialog.findViewById(com.ubaya.matrikulasialpro.R.id.buttonCobaLagi) as Button
+        val textSolusiSoal = dialog.findViewById(com.ubaya.matrikulasialpro.R.id.textSolusiSoal) as TextView
+
+        for (wrongAnswer in GlobalData.wrongAnswer){
+            if (namaSoal == wrongAnswer.namaSoal){
+                textSolusiSoal.text = wrongAnswer.textSolusi
+            }
+        }
+        buttonCobaLagi.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
     }
 }

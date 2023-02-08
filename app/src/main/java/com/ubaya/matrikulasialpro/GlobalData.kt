@@ -296,4 +296,109 @@ object GlobalData {
     var pilihanC = ""
     var pilihanD = ""
     var jawabanSoal = ""
+    var currentHalaman = 1
+
+    var answerKey = QuestionAnswerKey(
+        "Kurs Mata Uang",
+        R.drawable.hint_intro_kursmatauang_1,
+        "Diketahui:\n" +
+                "1 dollar A = 2 x 1.5 dollar C, berarti\n" +
+                "1 dollar A = 3 dollar C",
+        R.drawable.hint_intro_kursmatauang_2,
+        "Jadi, \n" +
+                "1000 dollar A = 3 x 1000 dollar C\n" +
+                "1000 dollar A = 3000 dollar C",
+        2
+    )
+    var wrongAnswer = arrayOf(
+        WrongAnswer(
+            "Kurs Mata Uang",
+            "Coba kamu cari terlebih dahulu 1 dollar A berapa dollar C dari pernyataan yang sudah diberikan. Yuk coba lagi!."
+        ),
+        WrongAnswer(
+            "Hasil Ulangan Harian",
+            "Sepertinya dari 6 pernyataan yang diberikan, masih ada yang belum kamu penuhi. Yuk cek kembali jawabanmu!."
+        ),
+        WrongAnswer(
+            "Kandang Bebek",
+            "Ingat, setiap kandang pasti ada bebeknya, berarti setiap kandang minimal ada 1 bebek di dalamnya. Yuk coba lagi!."
+        ),
+        WrongAnswer(
+            "Mainan Baru part 1",
+            "Ingat, peraturan ke-2: angka berwarna merah adalah angka berurutan. Berarti, angka berwarna merah saling bersebelahan. Yuk coba lagi!"
+        ),
+        WrongAnswer(
+            "Mainan Baru part 2",
+            "Sepertinya dari beberapa pernyataan yang diberikan, masih ada pernyataan yang belum kamu penuhi. Yuk coba lagi!."
+        ),
+        WrongAnswer(
+            "Tugas Prakarya",
+            "Sepertinya ada yang kamu kelewatan dalam menghitung kelipatan 5. Yuk coba lagi!"
+        ),
+        WrongAnswer(
+            "Eksperimen Tikus",
+            "Ingat, tiap 1 minggu, jumlah tikus berkurang stengah dari jumlahnya. Yuk coba lagi!"
+        ),
+        WrongAnswer(
+            "Bakteri",
+            "Ingat, setiap menit bakteri akan berkembang 2x lipat. Jika dalam 1 jam isi toples sudah dipenuhi dengan bakteri, " +
+                    "maka menit sebelumnya bakteri harus sudah 1/2 penuh. Yuk coba lagi!."
+        ),
+        WrongAnswer(
+            "Kantong Kelereng",
+            "Sesial-sialnya kita mengambil kelereng, harus mendapatkan semua warna dan jumlah tiap warna kelereng kurang dari 4. Yuk coba lagi!."
+        ),
+        WrongAnswer(
+            "Belanja Tepung",
+            "Sepertinya jawabanmu kurang tepat. Coba kamu mempertimbangkan nominal maksimal uang dengan jumlah kue yang dapat dihasilkan."
+        ),
+        WrongAnswer(
+            "Alat Musik part 1",
+            "Sepertinya jawabanmu kurang tepat. Coba kamu ikutin arahan dari tabel tombol merah dengan teliti."
+        ),
+        WrongAnswer(
+            "Alat Musik part 2",
+            "Sepertinya jawabanmu kurang tepat. Coba kamu ikutin arahan dari tabel tombol nada dengan teliti."
+        ),
+        WrongAnswer(
+            "Pesan Lampu part 1",
+            "Sepertinya jawabanmu kurang tepat. Coba kamu ikutin ketentuan kondisi lampu ke-6 dan ke-7 dengan teliti. Yuk coba lagi!"
+        ),
+        WrongAnswer(
+            "Pesan Lampu part 2",
+            "Sepertinya jawabanmu kurang tepat. Coba kamu ikutin ketentuan kondisi lampu ke-6 dan ke-7 dengan teliti. Yuk coba lagi!"
+        ),
+        WrongAnswer(
+            "Promosi Minuman",
+            "Sepertinya jawabanmu kurang tepat. Coba kamu periksa kembali apakah kamu sudah mengikuti 3 aturan yang sudah diberikan atau belum."
+        ),
+        WrongAnswer(
+            "Turnamen Catur part 1",
+            "Sepertinya jawabanmu kurang tepat. Cobalah pertimbangkan poin menang dan kalah saat melawan pecatur senior dan junior."
+        ),
+        WrongAnswer(
+            "Turnamen Catur part 2",
+            "Sepertinya jawabanmu kurang tepat. Cobalah kamu mencari total poin pecatur senior terlebih dahulu untuk dapat mengetahui total poin yang harus dilampaui."
+        ),
+        WrongAnswer(
+            "Katak",
+            "Sepertinya jawabanmu kurang tepat. Cobalah untuk berpikir mundur. kamu dapat melihat bahwa petak 0 dicapai dari petak 1."
+        ),
+        WrongAnswer(
+            "Turnamen Catur part 3",
+            "Sepertinya jawabanmu kurang tepat. Cobalah kamu mencari total poin pecatur pemula P terlebih dahulu untuk dapat mengetahui total poin yang harus dilampaui."
+        ),
+        WrongAnswer(
+            "Robby Si Robot",
+            "Sepertinya jawabanmu kurang tepat. Cobalah Perhatikan fungsi simbol-simbol yang ada dalam petak kotak. Kamu bisa mengikuti arah simbol untuk dapat mencapai ke si penerima paket."
+        ),
+        WrongAnswer(
+            "Labirin",
+            "Sepertinya jawabanmu kurang tepat. Cobalah perhatikan fungsi kode-kode yang ada untuk dapat menuju ke pintu keluar (finish)."
+        ),
+        WrongAnswer(
+            "Mobil Pengangkut Barang",
+            "Sepertinya jawabanmu kurang tepat. Cobalah Ikuti instruksi dengan teliti untuk dapat menemukan tumpukan balok yang benar."
+        ),
+    )
 }

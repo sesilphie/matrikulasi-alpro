@@ -1,14 +1,21 @@
 package com.ubaya.matrikulasialpro
 
+import android.app.Dialog
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Window
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import com.ubaya.matrikulasialpro.databinding.ActivityQuestionMobilPengangkutBarangBinding
 import com.ubaya.matrikulasialpro.databinding.ActivityQuestionPesanLampuBinding
 
 class QuestionMobilPengangkutBarangActivity : AppCompatActivity() {
     private lateinit var binding: ActivityQuestionMobilPengangkutBarangBinding
+
+    var namaSoal = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuestionMobilPengangkutBarangBinding.inflate(layoutInflater)
@@ -19,7 +26,7 @@ class QuestionMobilPengangkutBarangActivity : AppCompatActivity() {
         binding.imageButtonC.setBackgroundColor(Color.TRANSPARENT)
         binding.imageButtonD.setBackgroundColor(Color.TRANSPARENT)
 
-        val namaSoal = intent.getStringExtra(ExpertDetailActivity.EXTRA_NAMASOAL)
+        namaSoal = intent.getStringExtra(ExpertDetailActivity.EXTRA_NAMASOAL).toString()
         binding.textJudulSoal.text = namaSoal
 
         var pilihanUser = ""
@@ -75,8 +82,29 @@ class QuestionMobilPengangkutBarangActivity : AppCompatActivity() {
             if (GlobalData.jawabanSoal == pilihanUser){
                 Toast.makeText(this, "KAMU BENAR", Toast.LENGTH_SHORT).show()
             }else{
-                Toast.makeText(this, "KAMU SALAH", Toast.LENGTH_SHORT).show()
+                ShowDialogSalah()
+                //Toast.makeText(this, "KAMU SALAH", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+    fun ShowDialogSalah(){
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature( Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.dialog_salah_layout)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        val buttonCobaLagi = dialog.findViewById(R.id.buttonCobaLagi) as Button
+        val textSolusiSoal = dialog.findViewById(R.id.textSolusiSoal) as TextView
+
+        for (wrongAnswer in GlobalData.wrongAnswer){
+            if (namaSoal == wrongAnswer.namaSoal){
+                textSolusiSoal.text = wrongAnswer.textSolusi
+            }
+        }
+        buttonCobaLagi.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
     }
 }

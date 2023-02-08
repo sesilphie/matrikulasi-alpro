@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="15sp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textViewSalah"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="60dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="OOPS!  \n JAWABANMU KURANG TEPAT"
+                        android:textAlignment="center"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textSolusiSoal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="32dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Lorem Ipsum bla bla.. Lorem Ipsum bla bla.. Lorem Ipsum bla bla.."
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewSalah" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageGambarSalah"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/corner_background"
+        android:backgroundTint="#EC6060"
+        android:padding="8dp"
+        android:src="@drawable/ic_baseline_close_24"
+        app:layout_constraintBottom_toTopOf="@id/scrollView"
+        app:layout_constraintEnd_toEndOf="@id/scrollView"
+        app:layout_constraintStart_toStartOf="@id/scrollView"
+        app:layout_constraintTop_toTopOf="@id/scrollView" />
+
+    <Button
+        android:id="@+id/buttonCobaLagi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:text="Coba Lagi"
+        android:textSize="20dp"
+        app:cornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="@id/scrollView"
+        app:layout_constraintEnd_toEndOf="@id/scrollView"
+        app:layout_constraintStart_toStartOf="@id/scrollView"
+        app:layout_constraintTop_toBottomOf="@id/scrollView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
