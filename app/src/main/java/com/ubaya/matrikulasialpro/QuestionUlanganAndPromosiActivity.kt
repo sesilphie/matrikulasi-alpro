@@ -6,15 +6,14 @@ import android.os.Bundle
 import com.ubaya.matrikulasialpro.databinding.ActivityQuestionMobilPengangkutBarangBinding
 import com.ubaya.matrikulasialpro.databinding.ActivityQuestionUlanganAndPromosiBinding
 import android.R
+import android.annotation.SuppressLint
 import android.app.Dialog
 
 import android.graphics.drawable.Drawable
-import android.widget.Button
-import android.widget.ImageButton
 import android.graphics.drawable.ColorDrawable
+import android.view.View
 import android.view.Window
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 
 
 class QuestionUlanganAndPromosiActivity : AppCompatActivity() {
@@ -275,7 +274,8 @@ class QuestionUlanganAndPromosiActivity : AppCompatActivity() {
             var pilihanUser = binding.imageButton1.getTag().toString() + binding.imageButton2.getTag().toString() + binding.imageButton3.getTag().toString() +
                     binding.imageButton4.getTag().toString() + binding.imageButton5.getTag().toString()
             if (GlobalData.jawabanSoal == pilihanUser){
-                Toast.makeText(this, "KAMU BENAR", Toast.LENGTH_SHORT).show()
+                ShowDialogBenar()
+                //Toast.makeText(this, "KAMU BENAR", Toast.LENGTH_SHORT).show()
             } else{
                 ShowDialogSalah()
                 //Toast.makeText(this, "KAMU SALAH", Toast.LENGTH_SHORT).show()
@@ -298,6 +298,96 @@ class QuestionUlanganAndPromosiActivity : AppCompatActivity() {
             }
         }
         buttonCobaLagi.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
+    }
+    @SuppressLint("SetTextI18n")
+    fun ShowDialogBenar(){
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature( Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(com.ubaya.matrikulasialpro.R.layout.dialog_benar_layout)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        val buttonBerikutnya= dialog.findViewById(com.ubaya.matrikulasialpro.R.id.buttonBerikutnya) as Button
+        val buttonPrev = dialog.findViewById(com.ubaya.matrikulasialpro.R.id.buttonPrev) as ImageButton
+        val buttonNext = dialog.findViewById(com.ubaya.matrikulasialpro.R.id.buttonNext) as ImageButton
+        val textPenjelasan = dialog.findViewById(com.ubaya.matrikulasialpro.R.id.textPenjelasanSoal) as TextView
+        val textHalaman = dialog.findViewById(com.ubaya.matrikulasialpro.R.id.textHalaman) as TextView
+        val imageGambar = dialog.findViewById(com.ubaya.matrikulasialpro.R.id.imageGambarJawaban) as ImageView
+
+
+        for (answerKey in GlobalData.answerKey){
+            if(namaSoal == answerKey.namaSoal) {
+                GlobalData.textJawaban1 = answerKey.textJawaban1
+                GlobalData.textJawaban2 = answerKey.textJawaban2
+                GlobalData.textJawaban3 = answerKey.textJawaban3
+                GlobalData.idGambarBenar1 = answerKey.idGambar1
+                GlobalData.idGambarBenar2 = answerKey.idGambar2
+                GlobalData.idGambarBenar3 = answerKey.idGambar3
+                GlobalData.jumlahHalaman = answerKey.jumlahHalaman
+            }
+        }
+
+        if (GlobalData.jumlahHalaman <= 1){
+            buttonNext.visibility = View.INVISIBLE
+        }
+
+        buttonPrev.visibility = View.INVISIBLE
+        textPenjelasan.text = GlobalData.textJawaban1
+        textHalaman.text = GlobalData.currentHalaman.toString() + "/" + GlobalData.jumlahHalaman.toString()
+        imageGambar.setImageResource(GlobalData.idGambarBenar1)
+
+        buttonPrev.setOnClickListener {
+            if (GlobalData.currentHalaman == 1){
+                buttonPrev.visibility = View.INVISIBLE
+                buttonNext.visibility = View.VISIBLE
+                textPenjelasan.text = GlobalData.textJawaban1
+                textHalaman.text = GlobalData.currentHalaman.toString() + "/" + GlobalData.jumlahHalaman.toString()
+                imageGambar.setImageResource(GlobalData.idGambarBenar1)
+            } else if (GlobalData.currentHalaman == 2){
+                buttonNext.visibility = View.VISIBLE
+                buttonPrev.visibility = View.VISIBLE
+                textPenjelasan.text = GlobalData.textJawaban2
+                textHalaman.text = GlobalData.currentHalaman.toString() + "/" + GlobalData.jumlahHalaman.toString()
+                imageGambar.setImageResource(GlobalData.idGambarBenar2)
+                GlobalData.currentHalaman -= 1
+            }
+        }
+        buttonNext.setOnClickListener {
+            if (GlobalData.currentHalaman == 1){
+                GlobalData.currentHalaman += 1
+                textHalaman.text = GlobalData.currentHalaman.toString() + "/" + GlobalData.jumlahHalaman.toString()
+                if (GlobalData.currentHalaman == GlobalData.jumlahHalaman){
+                    buttonNext.visibility = View.INVISIBLE
+                    GlobalData.currentHalaman -= 1
+                }
+                buttonPrev.visibility = View.VISIBLE
+                textPenjelasan.text = GlobalData.textJawaban2
+                imageGambar.setImageResource(GlobalData.idGambarBenar2)
+            } else if (GlobalData.currentHalaman == 2){
+                GlobalData.currentHalaman += 1
+                textHalaman.text = GlobalData.currentHalaman.toString() + "/" + GlobalData.jumlahHalaman.toString()
+                if (GlobalData.currentHalaman == GlobalData.jumlahHalaman){
+                    buttonNext.visibility = View.INVISIBLE
+                    GlobalData.currentHalaman -= 1
+                }
+                buttonPrev.visibility = View.VISIBLE
+                textPenjelasan.text = GlobalData.textJawaban3
+                imageGambar.setImageResource(GlobalData.idGambarBenar3)
+            }
+        }
+
+        buttonBerikutnya.setOnClickListener {
+            GlobalData.currentHalaman = 1
+            GlobalData.jumlahHalaman = 0
+            GlobalData.idGambarBenar1 = 0
+            GlobalData.idGambarBenar2 = 0
+            GlobalData.idGambarBenar3 = 0
+            GlobalData.textJawaban1 = ""
+            GlobalData.textJawaban2 = ""
+            GlobalData.textJawaban3 = ""
             dialog.dismiss()
         }
         dialog.show()

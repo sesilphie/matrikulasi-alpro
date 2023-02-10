@@ -9,7 +9,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         app:cardBackgroundColor="@color/blue"
         app:cardCornerRadius="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
                 android:fontFamily="@font/poppins_bold"
                 android:text="Judul Soal"
                 android:textColor="@color/white"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -93,6 +93,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="TextView"
+                android:textAlignment="center"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="@+id/imageButton1"
                 app:layout_constraintStart_toStartOf="@+id/imageButton1"
@@ -104,6 +105,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="TextView"
+                android:textAlignment="center"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="@+id/imageButton5"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -112,8 +114,8 @@
 
             <ImageButton
                 android:id="@+id/imageButton1"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_marginTop="8dp"
                 android:scaleType="fitCenter"
                 app:layout_constraintStart_toStartOf="@+id/textSoal"
@@ -122,8 +124,8 @@
 
             <ImageButton
                 android:id="@+id/imageButton2"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:scaleType="fitCenter"
                 app:layout_constraintStart_toEndOf="@+id/imageButton1"
                 app:layout_constraintTop_toTopOf="@+id/imageButton1"
@@ -131,8 +133,8 @@
 
             <ImageButton
                 android:id="@+id/imageButton3"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:scaleType="fitCenter"
                 app:layout_constraintStart_toEndOf="@+id/imageButton2"
                 app:layout_constraintTop_toTopOf="@+id/imageButton2"
@@ -140,17 +142,17 @@
 
             <ImageButton
                 android:id="@+id/imageButton4"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:scaleType="fitCenter"
-                app:layout_constraintStart_toEndOf="@+id/imageButton3"
-                app:layout_constraintTop_toTopOf="@+id/imageButton3"
+                app:layout_constraintStart_toStartOf="@+id/imageButton1"
+                app:layout_constraintTop_toBottomOf="@+id/textAwal"
                 app:srcCompat="@drawable/expert_promosiminuman_p" />
 
             <ImageButton
                 android:id="@+id/imageButton5"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:scaleType="fitCenter"
                 app:layout_constraintStart_toEndOf="@+id/imageButton4"
                 app:layout_constraintTop_toTopOf="@+id/imageButton4"
@@ -160,6 +162,7 @@
                 android:id="@+id/buttonCekHasil"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="Cek Hasil"
@@ -168,7 +171,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/textSoal"
                 app:layout_constraintStart_toStartOf="@+id/textSoal"
-                app:layout_constraintTop_toBottomOf="@+id/textAwal" />
+                app:layout_constraintTop_toBottomOf="@+id/textAkhir" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline6"

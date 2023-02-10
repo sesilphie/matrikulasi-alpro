@@ -9,7 +9,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         app:cardBackgroundColor="@color/blue"
         app:cardCornerRadius="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
                 android:fontFamily="@font/poppins_bold"
                 android:text="Judul Soal"
                 android:textColor="@color/white"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -50,7 +50,20 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youtube_player_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:autoPlay="true"
+        app:enableAutomaticInitialization="false"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:videoId="cnCZXJRkYYI" />
+
     <ScrollView
+        android:id="@+id/scrollView3"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#4DFFEFBE"
@@ -58,40 +71,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView">
+        app:layout_constraintTop_toBottomOf="@+id/youtube_player_view">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-                android:id="@+id/youtube_player_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:autoPlay="true"
-                app:enableAutomaticInitialization="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:videoId="cnCZXJRkYYI" />
 
             <TextView
                 android:id="@+id/textSoal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/poppins"
                 android:text="Soal Lorem Ipsum"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/youtube_player_view" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/imageButton1"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
                 android:layout_marginTop="8dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="@+id/textSoal"
@@ -100,8 +102,8 @@
 
             <ImageButton
                 android:id="@+id/imageButton2"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toEndOf="@+id/imageButton1"
                 app:layout_constraintTop_toTopOf="@+id/imageButton1"
@@ -109,8 +111,8 @@
 
             <ImageButton
                 android:id="@+id/imageButton3"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toEndOf="@+id/imageButton2"
                 app:layout_constraintTop_toTopOf="@+id/imageButton2"
@@ -118,8 +120,8 @@
 
             <ImageButton
                 android:id="@+id/imageButton4"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toEndOf="@+id/imageButton3"
                 app:layout_constraintTop_toTopOf="@+id/imageButton3"
@@ -127,8 +129,8 @@
 
             <ImageButton
                 android:id="@+id/imageButton5"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toEndOf="@+id/imageButton4"
                 app:layout_constraintTop_toTopOf="@+id/imageButton4"
@@ -136,8 +138,8 @@
 
             <ImageButton
                 android:id="@+id/imageButton6"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="@+id/imageButton1"
                 app:layout_constraintTop_toBottomOf="@+id/imageButton1"
@@ -145,8 +147,8 @@
 
             <ImageButton
                 android:id="@+id/imageButton7"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toEndOf="@+id/imageButton6"
                 app:layout_constraintTop_toTopOf="@+id/imageButton6"
@@ -154,8 +156,8 @@
 
             <ImageButton
                 android:id="@+id/imageButton8"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toEndOf="@+id/imageButton7"
                 app:layout_constraintTop_toTopOf="@+id/imageButton7"
@@ -163,8 +165,8 @@
 
             <ImageButton
                 android:id="@+id/imageButton9"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toEndOf="@+id/imageButton8"
                 app:layout_constraintTop_toTopOf="@+id/imageButton8"
@@ -174,6 +176,7 @@
                 android:id="@+id/buttonCekHasil"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="Cek Hasil"

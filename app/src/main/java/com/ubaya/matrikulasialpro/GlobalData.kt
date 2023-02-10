@@ -189,7 +189,7 @@ object GlobalData {
                     "Gerakan ke kanan: Misalnya sebuah kotak ditandai dengan “2R” berarti ia harus melompat ke kanan sebanyak 2 petak, " +
                     "lalu menandai petak akhir lompatannya:",
             R.drawable.expert_katak1,
-            "Gerakan ke kiri: Misalnya sebuah kotak ditandai “2L” berarti ia harus melompat ke kiri sebanyak 2 petak " +
+            "Gerakan ke kiri: M`isalnya sebuah kotak ditandai “2L” berarti ia harus melompat ke kiri sebanyak 2 petak " +
                     "lalu menandai petak akhir lompatannya:",
             R.drawable.expert_katak2,
             "Diam. Jika isi petak adalah 0, maka ia harus tetap pada tempatnya alias berhenti melompat.\n" +
@@ -296,19 +296,280 @@ object GlobalData {
     var pilihanC = ""
     var pilihanD = ""
     var jawabanSoal = ""
-    var currentHalaman = 1
 
-    var answerKey = QuestionAnswerKey(
-        "Kurs Mata Uang",
-        R.drawable.hint_intro_kursmatauang_1,
-        "Diketahui:\n" +
-                "1 dollar A = 2 x 1.5 dollar C, berarti\n" +
-                "1 dollar A = 3 dollar C",
-        R.drawable.hint_intro_kursmatauang_2,
-        "Jadi, \n" +
-                "1000 dollar A = 3 x 1000 dollar C\n" +
-                "1000 dollar A = 3000 dollar C",
-        2
+    var textJawaban1 = ""
+    var textJawaban2 = ""
+    var textJawaban3 = ""
+    var idGambarBenar1 = 0
+    var idGambarBenar2 = 0
+    var idGambarBenar3 = 0
+    var currentHalaman = 1
+    var jumlahHalaman = 0
+
+    var answerKey = arrayOf(
+        Hint(
+            "Kurs Mata Uang",
+            R.drawable.benar_intro_kursmatauang_1,
+            "Diketahui:\n" +
+                    "1 dollar A = 2 x 1.5 dollar C, berarti\n" +
+                    "1 dollar A = 3 dollar C",
+            R.drawable.benar_intro_kursmatauang_2,
+            "Jadi, \n" +
+                    "1000 dollar A = 3 x 1000 dollar C\n" +
+                    "1000 dollar A = 3000 dollar C",
+            0, "", 0, "", 0, "", 0, "", 0, "",
+            2
+        ),
+        Hint(
+            "Hasil Ulangan Harian",
+            R.drawable.benar_intro_ulanganharian,
+            "Diperoleh perbandingan sebagai berikut:\n" +
+                    "Ana < Nia\n" +
+                    "Ana > Ina\n" +
+                    "Ani > Ian\n" +
+                    "Ina > Ian\n" +
+                    "Ani > Ana\n" +
+                    "Ani < Nia",
+            0,
+            "",
+            0,
+            "",
+            0, "", 0, "", 0, "", 0, "",
+            1
+        ),
+        Hint(
+            "Kandang Bebek",
+            R.drawable.benar_intro_kandangbebek_1,
+            "Karena setiap kandang ada bebeknya, berarti Setiap kandang pasti berisi min 1 bebek. ",
+            R.drawable.benar_intro_kandangbebek_2,
+            "Sehingga tersisa 3 bebek yang bisa dimasukkan ke dalam 1 kandang lain.",
+            R.drawable.benar_intro_kandangbebek_3,
+            "Jadi, jumlah maksimum pada 1 kandang adalah 4 bebek.",
+            0, "", 0, "", 0, "", 0, "",
+            3
+        ),
+        Hint(
+            "Mainan Baru part 1",
+            R.drawable.benar_intro_mainanpart1_1,
+            "Dari aturan yang sudah diberikan, warna merah memiliki syarat harus berurutan.",
+            R.drawable.benar_intro_mainanpart1_2,
+            "Sehingga jika salah satu merah di angka 3, maka angka merah lainnya berada di antara angka 2 atau angka 4.",
+            R.drawable.benar_intro_mainanpart1_3,
+            "Karena angka 4 dipakai oleh warna hijau, maka hanya angka 2 yang memenuhi. Mudah bukan?",
+            0, "", 0, "", 0, "", 0, "",
+            3
+        ),
+        Hint(
+            "Mainan Baru part 2",
+            R.drawable.benar_intro_mainanpart2,
+            "Dengan memperhatikan aturan yang ada kita bisa menempatkan warna lain dengan tepat.",
+            0,
+            "",
+            0,
+            "",
+            0, "", 0, "", 0, "", 0, "",
+            1
+        ),
+        Hint(
+            "Tugas Prakarya",
+            R.drawable.benar_beginner_tugasprakarya,
+            "Terdapat 10 angka 5 sebagai satuan dan 10 angka 5 sebagai puluhan. Kemudian di total menjadi 20.",
+            0,
+            "",
+            0,
+            "",
+            0, "", 0, "", 0, "", 0, "",
+            1
+        ),
+        Hint(
+            "Eksperimen Tikus",
+            R.drawable.benar_beginner_eksperimentikus_1,
+            "tiap minggu pasti seekor tikus saling memakan tikus lainnya, berarti:\n" +
+                    "Minggu ke-1: 100 div 2 = 50 tikus yang berhasil bertahan hidup.",
+            R.drawable.benar_beginner_eksperimentikus_2,
+            "Minggu ke-2: 50 div 2 = 25 tikus yang berhasil bertahan hidup.",
+            R.drawable.benar_beginner_eksperimentikus_3,
+            "Minggu ke-3: 25 div 2 = 12 tikus\n" +
+                    "Jadi, tikus yang berhasil hidup setelah 3 minggu adalah 12 tikus.",
+            0, "", 0, "", 0, "", 0, "",
+            3
+        ),
+        Hint(
+            "Bakteri",
+            R.drawable.benar_beginner_bakteri_1,
+            "Soal bakteri ini berkaitan dengan barisan geometri.\n" +
+                    "1, 2, 4, 8, 16, …",
+            R.drawable.benar_beginner_bakteri_2,
+            "Dalam waktu 1 jam toples tersebut penuh, maka sebelumnya toples tersebut keadaannya ½ penuh.",
+            R.drawable.benar_beginner_bakteri_2,
+            "Dari keadaan ½ penuh ke penuh membutuhkan waktu 1 menit, sehingga Toples ½ penuh pada menit = 60 – 1 = 59. " +
+                    "Jadi, topes tersebut ½ penuh pada menit ke-59.",
+            0, "", 0, "", 0, "", 0, "",
+            3
+        ),
+        Hint(
+            "Kantong Kelereng",
+            R.drawable.benar_beginner_kantongkelereng,
+            "Sesial-sialnya kita mengambil 10 kelereng, terdiri dari 2 kelereng merah, 4 kelereng biru, 4 kelereng kuning.",
+            R.drawable.benar_beginner_kantongkelereng,
+            "Jika kita mengambil 1 kelereng lagi, kelereng warna apapun kita ambil, pasti salah satu warna berjumlah 5. " +
+                    "Jadi maksimal kita perlu mengambil 11 kelereng.",
+            0,
+            "",
+            0, "", 0, "", 0, "", 0, "",
+            2
+        ),
+        Hint(
+            "Belanja Tepung",
+            R.drawable.benar_standart_belanjatepung,
+            "Jika melihat harga/kue dari tiap merk tepung, kita dapat membeli tepung merk E, D, A, C dengan total " +
+                    "harga Rp. 9,000 dan mendapatkan total kue sebanyak 20.",
+            0,
+            "",
+            0,
+            "",
+            0, "", 0, "", 0, "", 0, "",
+            1
+        ),
+        Hint(
+            "Alat Musik part 1",
+            R.drawable.benar_standart_alatmusik,
+            "Sesuai dengan urutan penekanan yang berada pada tabel: do-mi-fa-sol-mi-fa.",
+            0,
+            "",
+            0,
+            "",
+            0, "", 0, "", 0, "", 0, "",
+            1
+        ),
+        Hint(
+            "Alat Musik part 2",
+            R.drawable.benar_standart_alatmusik,
+            "Sesuai dengan tombol nada yang ditekan yaitu:\n" +
+                    "Do - re(putih) - mi(putih) - fa(merah) - sol(merah) - do(putih) - mi(merah) - mi(putih).",
+            0,
+            "",
+            0,
+            "",
+            0, "", 0, "", 0, "", 0, "",
+            1
+        ),
+        Hint(
+            "Pesan Lampu part 1",
+            R.drawable.benar_standart_pesanlampu_part1_1,
+            "Lampu ke-6 harusnya nyala (karena ada 4 lampu nyala di antara 5 lampu pertama).",
+            R.drawable.benar_standart_pesanlampu_part1_2,
+            "Lampu ke-7 harusnya nyala (karena hanya ada 1 lampu padam di antara 6 lampu pertama).",
+            0,
+            "",
+            0, "", 0, "", 0, "", 0, "",
+            2
+        ),
+        Hint(
+            "Pesan Lampu part 2",
+            R.drawable.benar_standart_pesanlampu_part2_1,
+            "Jawaban ke-2 yang mengikuti ketentuan dengan benar.\n" +
+                    "Lampu ke-6 harusnya padam (karena semua lampu nyala di antara 5 lampu pertama).",
+            R.drawable.benar_standart_pesanlampu_part2_2,
+            "Lampu ke-7 harusnya nyala (karena hanya ada 1 lampu padam di antara 6 lampu pertama).",
+            0,
+            "",
+            0, "", 0, "", 0, "", 0, "",
+            2
+        ),
+        Hint(
+            "Promosi Minuman",
+            R.drawable.benar_expert_promosiminuman,
+            "Kamu berhasil mengatur jadwal kunjungan sesuai dengan aturan yang diberikan!",
+            0,
+            "",
+            0,
+            "",
+            0, "", 0, "", 0, "", 0, "",
+            1
+        ),
+        Hint(
+            "Turnamen Catur part 1",
+            R.drawable.benar_expert_turnamencatur_part1_1,
+            "Nilai semakin tinggi jika mengalahkan pecatur senior. Maka dari itu, Jika kalah 2 kali, maka pecatur senior harus mengalami kekalahan saat melawan pecatur pemula.",
+            R.drawable.benar_expert_turnamencatur_part1_2,
+            "Dia harus meraih kemenangan di 2 pecatur senior dan 1 pecatur pemula. Jadi, maksimum poinnya adalah 2*2 + 1*1 - 2*2 = 1 poin.",
+            0,
+            "",
+            0, "", 0, "", 0, "", 0, "",
+            2
+        ),
+        Hint(
+            "Turnamen Catur part 2",
+            R.drawable.benar_expert_turnamencatur_part2_1,
+            "Seorang pecatur senior yang kalah sekali dengan pecatur senior lainnya memiliki total poin: 2*1+3*1-2 = 3.",
+            R.drawable.benar_expert_turnamencatur_part2_2,
+            "Jika ingin mengalahkan poinnya Pecatur pemula harus memenangkan 4 pertandingan sisanya sehingga memperoleh poin: 2*2 + 2*1 - 1 = 5 poin. ",
+            0,
+            "",
+            0, "", 0, "", 0, "", 0, "",
+            2
+        ),
+        Hint(
+            "Katak",
+            R.drawable.benar_expert_katak_1,
+            "Berpikir mundur, kita dapat melihat bahwa petak 2 yang berisi angka nol dapat dicapai dari petak 1. \n" +
+                    "Petak 1 dapat dicapai dari petak 4. Petak 4 dapat dicapai dari petak 7.",
+            R.drawable.benar_expert_katak_2,
+            "Petak 7 dapat dicapai dari petak 6.\n" +
+                    "Petak 6 dapat dicapai dari petak 8.",
+            R.drawable.benar_expert_katak_3,
+            "Petak 8 dapat dicapai dari petak 5. \n" +
+                    "Terakhir, Petak 5 dapat dicapai dari petak 3.",
+            0, "", 0, "", 0, "", 0, "",
+            3
+        ),
+        Hint(
+            "Turnamen Catur part 3",
+            R.drawable.benar_expert_turnamencatur_part3,
+            "Total poin pecatur pemula jika kalah dari P adalah -1 + 3×2 + 1 = 6. Sehingga sang juara adalah pecatur pemula lain, yaitu O atau Q.",
+            0,
+            "",
+            0,
+            "",
+            0, "", 0, "", 0, "", 0, "",
+            1
+        ),
+        Hint(
+            "Robby Si Robot",
+            R.drawable.benar_expert_robbysirobot,
+            "Kamu berhasil menemukan jalur yang tepat.\n" +
+                    "A1 B1 C1 C2 D2 D3 E3 E4 E5",
+            0,
+            "",
+            0,
+            "",
+            0, "", 0, "", 0, "", 0, "",
+            1
+        ),
+        Hint(
+            "Labirin",
+            R.drawable.benar_expert_labirin,
+            "Kamu berhasil menemukan jalur yang tepat (C, D, D, A, C).",
+            0,
+            "",
+            0,
+            "",
+            0, "", 0, "", 0, "", 0, "",
+            1
+        ),
+        Hint(
+            "Mobil Pengangkut Barang",
+            R.drawable.benar_expert_mobilpengangkutbarang,
+            "Tumpukan balok Pertama adalah satu-satunya yang mengikuti instruksi dengan benar. \n",
+            R.drawable.benar_expert_mobilpengangkutbarang,
+            "Dimulai dengan menempatkan 2 balok berwarna sama diikuti dengan 1 balok berwarna beda. " +
+                    "Kemudian, mengulangi langkah yang sama dari langkah ke-2.",
+            R.drawable.benar_expert_mobilpengangkutbarang,
+            "Sama halnya dengan pemrograman, program selalu berjalan dari perintah atas ke bawah. Mudah bukan?",
+            0, "", 0, "", 0, "", 0, "",
+            3
+        )
     )
     var wrongAnswer = arrayOf(
         WrongAnswer(
@@ -401,4 +662,15 @@ object GlobalData {
             "Sepertinya jawabanmu kurang tepat. Cobalah Ikuti instruksi dengan teliti untuk dapat menemukan tumpukan balok yang benar."
         ),
     )
+
+    fun ClearJawaban(){
+        currentHalaman = 1
+        jumlahHalaman = 0
+        idGambarBenar1 = 0
+        idGambarBenar2 = 0
+        idGambarBenar3 = 0
+        textJawaban1 = ""
+        textJawaban2 = ""
+        textJawaban3 = ""
+    }
 }

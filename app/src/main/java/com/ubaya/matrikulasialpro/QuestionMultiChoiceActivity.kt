@@ -131,44 +131,78 @@ class QuestionMultiChoiceActivity : AppCompatActivity() {
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         val buttonBerikutnya= dialog.findViewById(R.id.buttonBerikutnya) as Button
-        val buttonPrev = dialog.findViewById(R.id.buttonPrev) as Button
-        val buttonNext = dialog.findViewById(R.id.buttonNext) as Button
+        val buttonPrev = dialog.findViewById(R.id.buttonPrev) as ImageButton
+        val buttonNext = dialog.findViewById(R.id.buttonNext) as ImageButton
         val textPenjelasan = dialog.findViewById(R.id.textPenjelasanSoal) as TextView
         val textHalaman = dialog.findViewById(R.id.textHalaman) as TextView
         val imageGambar = dialog.findViewById(R.id.imageGambarJawaban) as ImageView
 
-        val kunciJawaban = GlobalData.answerKey
+        buttonNext.setBackgroundColor(Color.TRANSPARENT)
+        buttonPrev.setBackgroundColor(Color.TRANSPARENT)
+
+        for (answerKey in GlobalData.answerKey){
+            if(namaSoal == answerKey.namaSoal) {
+                GlobalData.textJawaban1 = answerKey.textJawaban1
+                GlobalData.textJawaban2 = answerKey.textJawaban2
+                GlobalData.textJawaban3 = answerKey.textJawaban3
+                GlobalData.idGambarBenar1 = answerKey.idGambar1
+                GlobalData.idGambarBenar2 = answerKey.idGambar2
+                GlobalData.idGambarBenar3 = answerKey.idGambar3
+                GlobalData.jumlahHalaman = answerKey.jumlahHalaman
+            }
+        }
+
+        if (GlobalData.jumlahHalaman <= 1){
+            buttonNext.visibility = View.INVISIBLE
+        }
 
         buttonPrev.visibility = View.INVISIBLE
-        textPenjelasan.text = kunciJawaban.textJawaban1
-        textHalaman.text = GlobalData.currentHalaman.toString() + "/" + kunciJawaban.jumlahHalaman.toString()
-        imageGambar.setImageResource(kunciJawaban.idGambar1)
+        textPenjelasan.text = GlobalData.textJawaban1
+        textHalaman.text = GlobalData.currentHalaman.toString() + "/" + GlobalData.jumlahHalaman.toString()
+        imageGambar.setImageResource(GlobalData.idGambarBenar1)
 
         buttonPrev.setOnClickListener {
             if (GlobalData.currentHalaman == 1){
                 buttonPrev.visibility = View.INVISIBLE
                 buttonNext.visibility = View.VISIBLE
-                textPenjelasan.text = kunciJawaban.textJawaban1
-                textHalaman.text = GlobalData.currentHalaman.toString() + "/" + kunciJawaban.jumlahHalaman.toString()
-                imageGambar.setImageResource(kunciJawaban.idGambar1)
+                textPenjelasan.text = GlobalData.textJawaban1
+                textHalaman.text = GlobalData.currentHalaman.toString() + "/" + GlobalData.jumlahHalaman.toString()
+                imageGambar.setImageResource(GlobalData.idGambarBenar1)
+            } else if (GlobalData.currentHalaman == 2){
+                buttonNext.visibility = View.VISIBLE
+                buttonPrev.visibility = View.VISIBLE
+                textPenjelasan.text = GlobalData.textJawaban2
+                textHalaman.text = GlobalData.currentHalaman.toString() + "/" + GlobalData.jumlahHalaman.toString()
+                imageGambar.setImageResource(GlobalData.idGambarBenar2)
+                GlobalData.currentHalaman -= 1
             }
         }
         buttonNext.setOnClickListener {
-            if (GlobalData.currentHalaman >= 1){
+            if (GlobalData.currentHalaman == 1){
                 GlobalData.currentHalaman += 1
-                textHalaman.text = GlobalData.currentHalaman.toString() + "/" + kunciJawaban.jumlahHalaman.toString()
-                if (GlobalData.currentHalaman == kunciJawaban.jumlahHalaman){
+                textHalaman.text = GlobalData.currentHalaman.toString() + "/" + GlobalData.jumlahHalaman.toString()
+                if (GlobalData.currentHalaman == GlobalData.jumlahHalaman){
                     buttonNext.visibility = View.INVISIBLE
                     GlobalData.currentHalaman -= 1
                 }
                 buttonPrev.visibility = View.VISIBLE
-                textPenjelasan.text = kunciJawaban.textJawaban2
-                imageGambar.setImageResource(kunciJawaban.idGambar2)
+                textPenjelasan.text = GlobalData.textJawaban2
+                imageGambar.setImageResource(GlobalData.idGambarBenar2)
+            } else if (GlobalData.currentHalaman == 2){
+                GlobalData.currentHalaman += 1
+                textHalaman.text = GlobalData.currentHalaman.toString() + "/" + GlobalData.jumlahHalaman.toString()
+                if (GlobalData.currentHalaman == GlobalData.jumlahHalaman){
+                    buttonNext.visibility = View.INVISIBLE
+                    GlobalData.currentHalaman -= 1
+                }
+                buttonPrev.visibility = View.VISIBLE
+                textPenjelasan.text = GlobalData.textJawaban3
+                imageGambar.setImageResource(GlobalData.idGambarBenar3)
             }
         }
 
         buttonBerikutnya.setOnClickListener {
-            GlobalData.currentHalaman = 1
+            GlobalData.ClearJawaban()
             dialog.dismiss()
         }
         dialog.show()

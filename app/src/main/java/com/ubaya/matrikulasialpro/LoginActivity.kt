@@ -1,6 +1,7 @@
 package com.ubaya.matrikulasialpro
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.ubaya.matrikulasialpro.databinding.ActivityLoginBinding
@@ -12,6 +13,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
 
         binding.buttonLogin.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)

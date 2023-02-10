@@ -13,56 +13,71 @@
         android:theme="@style/Theme.MatrikulasiAlpro">
         <activity
             android:name=".QuestionMainanBaruPart2Actvity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".QuestionUlanganAndPromosiActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".QuestionMobilPengangkutBarangActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".QuestionKatakAndRobotActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".QuestionLabirinActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".QuestionPesanLampuActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".QuestionVideoActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".QuestionMultiChoiceActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ExpertDetailActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".StandartDetailActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".BeginnerDetailActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".IntroductionDetailActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".RegisterActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".LoginActivity"
+            android:screenOrientation="portrait"
             android:exported="true" >
-
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:exported="true">
+
         </activity>
 
         <meta-data

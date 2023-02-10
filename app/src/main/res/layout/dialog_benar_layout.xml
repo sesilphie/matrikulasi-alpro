@@ -81,43 +81,27 @@
                         app:layout_constraintStart_toStartOf="@+id/textPenjelasanSoal"
                         app:layout_constraintTop_toBottomOf="@+id/textPenjelasanSoal" />
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/buttonNext"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="90dp"
+                        android:layout_height="55dp"
                         android:layout_marginBottom="32dp"
-                        android:backgroundTint="@color/orange"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:padding="0dp"
-                        android:paddingStart="0dp"
-                        android:paddingLeft="0dp"
-                        android:paddingTop="0dp"
-                        android:paddingRight="0dp"
-                        android:text="next"
-                        android:textSize="14sp"
-                        app:cornerRadius="30dp"
+                        android:scaleType="fitCenter"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/textHalaman"
-                        app:layout_constraintTop_toBottomOf="@+id/textHalaman" />
+                        app:layout_constraintTop_toBottomOf="@+id/textHalaman"
+                        app:srcCompat="@drawable/button_next" />
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/buttonPrev"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="90dp"
+                        android:layout_height="55dp"
                         android:layout_marginBottom="32dp"
-                        android:backgroundTint="@color/orange"
-                        android:fontFamily="@font/poppins_bold"
-                        android:padding="0dp"
-                        android:paddingLeft="0dp"
-                        android:paddingTop="0dp"
-                        android:paddingRight="0dp"
-                        android:paddingBottom="0dp"
-                        android:text="prev"
-                        android:textSize="14sp"
-                        app:cornerRadius="30dp"
+                        android:scaleType="fitCenter"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/textHalaman"
-                        app:layout_constraintTop_toBottomOf="@+id/textHalaman" />
+                        app:layout_constraintTop_toBottomOf="@+id/textHalaman"
+                        app:srcCompat="@drawable/button_prev" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -128,7 +112,7 @@
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@drawable/corner_background"
+        android:background="@drawable/corner_background_benar"
         android:padding="8dp"
         android:src="@drawable/ic_baseline_check"
         app:layout_constraintBottom_toTopOf="@id/scrollView"
