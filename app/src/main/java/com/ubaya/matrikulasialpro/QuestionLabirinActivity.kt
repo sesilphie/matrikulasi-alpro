@@ -2,6 +2,7 @@ package com.ubaya.matrikulasialpro
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -19,8 +20,11 @@ import com.ubaya.matrikulasialpro.databinding.ActivityQuestionPesanLampuBinding
 
 class QuestionLabirinActivity : AppCompatActivity() {
     private lateinit var binding: ActivityQuestionLabirinBinding
-
+    companion object{
+        val EXTRA_NAMASOAL = "EXTRA_NAMASOAL"
+    }
     var namaSoal = ""
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuestionLabirinBinding.inflate(layoutInflater)
@@ -105,13 +109,129 @@ class QuestionLabirinActivity : AppCompatActivity() {
         }
 
         binding.buttonCekHasil.setOnClickListener {
-            ShowDialogBenar()
             if (GlobalData.jawabanSoal == pilihanUser){
-                //Toast.makeText(this, "KAMU BENAR", Toast.LENGTH_SHORT).show()
+                ShowDialogBenar()
             }else{
                 ShowDialogSalah()
-                //Toast.makeText(this, "KAMU SALAH", Toast.LENGTH_SHORT).show()
             }
+        }
+        binding.buttonHint.setOnClickListener{
+            val dialog = Dialog(this)
+            dialog.requestWindowFeature( Window.FEATURE_NO_TITLE)
+            dialog.setCancelable(false)
+            dialog.setContentView(R.layout.dialog_hint_layout)
+            dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+            val buttonMengerti= dialog.findViewById(R.id.buttonMengertiHint) as Button
+            val buttonPrev = dialog.findViewById(R.id.buttonPrevHint) as ImageButton
+            val buttonNext = dialog.findViewById(R.id.buttonNextHint) as ImageButton
+            val textPenjelasan = dialog.findViewById(R.id.textPenjelasanHint) as TextView
+            val textHalaman = dialog.findViewById(R.id.textHalamanHint) as TextView
+            val imageGambar = dialog.findViewById(R.id.imageGambarHint) as ImageView
+
+            buttonNext.setBackgroundColor(Color.TRANSPARENT)
+            buttonPrev.setBackgroundColor(Color.TRANSPARENT)
+
+            for (hint in GlobalData.hintQuestion){
+                if(namaSoal == hint.namaSoal) {
+                    GlobalData.textHint1 = hint.textHint1
+                    GlobalData.textHint2 = hint.textHint2
+                    GlobalData.textHint3 = hint.textHint3
+                    GlobalData.textHint4 = hint.textHint4
+                    GlobalData.textHint5 = hint.textHint5
+                    GlobalData.textHint6 = hint.textHint6
+                    GlobalData.textHint7 = hint.textHint7
+
+                    GlobalData.idGambarHint1 = hint.idGambar1
+                    GlobalData.idGambarHint2 = hint.idGambar2
+                    GlobalData.idGambarHint3 = hint.idGambar3
+                    GlobalData.idGambarHint4 = hint.idGambar4
+                    GlobalData.idGambarHint5 = hint.idGambar5
+                    GlobalData.idGambarHint6 = hint.idGambar6
+                    GlobalData.idGambarHint7 = hint.idGambar7
+                    GlobalData.jumlahHalamanHint = hint.jumlahHalaman
+                }
+            }
+
+            if (GlobalData.jumlahHalamanHint <= 1){
+                buttonNext.visibility = View.INVISIBLE
+            }
+
+            buttonPrev.visibility = View.INVISIBLE
+            textPenjelasan.text = GlobalData.textHint1
+            textHalaman.text = GlobalData.currentHalamanHint.toString() + "/" + GlobalData.jumlahHalamanHint.toString()
+            imageGambar.setImageResource(GlobalData.idGambarHint1)
+
+            buttonPrev.setOnClickListener {
+                textHalaman.text = GlobalData.currentHalamanHint.toString() + "/" + GlobalData.jumlahHalamanHint.toString()
+                if (GlobalData.currentHalamanHint == 1){
+                    buttonPrev.visibility = View.INVISIBLE
+                    textPenjelasan.text = GlobalData.textHint1
+                    imageGambar.setImageResource(GlobalData.idGambarHint1)
+                } else if(GlobalData.currentHalamanHint == 2){
+                    textPenjelasan.text = GlobalData.textHint2
+                    imageGambar.setImageResource(GlobalData.idGambarHint2)
+                    buttonPrev.visibility = View.VISIBLE
+                    GlobalData.currentHalamanHint -= 1
+                } else if(GlobalData.currentHalamanHint == 3){
+                    textPenjelasan.text = GlobalData.textHint3
+                    imageGambar.setImageResource(GlobalData.idGambarHint3)
+                    buttonPrev.visibility = View.VISIBLE
+                    GlobalData.currentHalamanHint -= 1
+                } else if(GlobalData.currentHalamanHint == 4){
+                    textPenjelasan.text = GlobalData.textHint4
+                    imageGambar.setImageResource(GlobalData.idGambarHint4)
+                    buttonPrev.visibility = View.VISIBLE
+                    GlobalData.currentHalamanHint -= 1
+                } else if(GlobalData.currentHalamanHint == 5){
+                    textPenjelasan.text = GlobalData.textHint5
+                    imageGambar.setImageResource(GlobalData.idGambarHint5)
+                    buttonPrev.visibility = View.VISIBLE
+                    GlobalData.currentHalamanHint -= 1
+                } else if(GlobalData.currentHalamanHint == 6){
+                    textPenjelasan.text = GlobalData.textHint6
+                    imageGambar.setImageResource(GlobalData.idGambarHint6)
+                    buttonPrev.visibility = View.VISIBLE
+                    GlobalData.currentHalamanHint -= 1
+                }
+                buttonNext.visibility = View.VISIBLE
+            }
+            buttonNext.setOnClickListener {
+
+                GlobalData.currentHalamanHint += 1
+                textHalaman.text = GlobalData.currentHalamanHint.toString() + "/" + GlobalData.jumlahHalamanHint.toString()
+                if (GlobalData.currentHalamanHint == 2){
+                    textPenjelasan.text = GlobalData.textHint2
+                    imageGambar.setImageResource(GlobalData.idGambarHint2)
+                } else if (GlobalData.currentHalamanHint == 3){
+                    textPenjelasan.text = GlobalData.textHint3
+                    imageGambar.setImageResource(GlobalData.idGambarHint3)
+                } else if (GlobalData.currentHalamanHint == 4){
+                    textPenjelasan.text = GlobalData.textHint4
+                    imageGambar.setImageResource(GlobalData.idGambarHint4)
+                } else if (GlobalData.currentHalamanHint == 5){
+                    textPenjelasan.text = GlobalData.textHint5
+                    imageGambar.setImageResource(GlobalData.idGambarHint5)
+                } else if (GlobalData.currentHalamanHint == 6){
+                    textPenjelasan.text = GlobalData.textHint6
+                    imageGambar.setImageResource(GlobalData.idGambarHint6)
+                } else if (GlobalData.currentHalamanHint == 7){
+                    textPenjelasan.text = GlobalData.textHint7
+                    imageGambar.setImageResource(GlobalData.idGambarHint7)
+                }
+
+                if (GlobalData.currentHalamanHint == GlobalData.jumlahHalamanHint){
+                    buttonNext.visibility = View.INVISIBLE
+                    GlobalData.currentHalamanHint -= 1
+                }
+                buttonPrev.visibility = View.VISIBLE
+            }
+
+            buttonMengerti.setOnClickListener {
+                GlobalData.ClearHint()
+                dialog.dismiss()
+            }
+            dialog.show()
         }
     }
     @SuppressLint("SetTextI18n")
@@ -134,9 +254,9 @@ class QuestionLabirinActivity : AppCompatActivity() {
 
         for (answerKey in GlobalData.answerKey){
             if(namaSoal == answerKey.namaSoal) {
-                GlobalData.textJawaban1 = answerKey.textJawaban1
-                GlobalData.textJawaban2 = answerKey.textJawaban2
-                GlobalData.textJawaban3 = answerKey.textJawaban3
+                GlobalData.textJawaban1 = answerKey.textHint1
+                GlobalData.textJawaban2 = answerKey.textHint2
+                GlobalData.textJawaban3 = answerKey.textHint3
                 GlobalData.idGambarBenar1 = answerKey.idGambar1
                 GlobalData.idGambarBenar2 = answerKey.idGambar2
                 GlobalData.idGambarBenar3 = answerKey.idGambar3
@@ -195,7 +315,17 @@ class QuestionLabirinActivity : AppCompatActivity() {
 
         buttonBerikutnya.setOnClickListener {
             GlobalData.ClearJawaban()
-            dialog.dismiss()
+            if (namaSoal == "Labirin") {
+                if(GlobalData.levelTertinggiUser == 3){
+                    if (GlobalData.noSoalTertinggiUser < 8){
+                        GlobalData.noSoalTertinggiUser = 8
+                    }
+                }
+                val intent = Intent(this, QuestionMobilPengangkutBarangActivity::class.java)
+                intent.putExtra(EXTRA_NAMASOAL, "Mobil Pengangkut Barang")
+                startActivity(intent)
+            }
+            finish()
         }
         dialog.show()
     }
@@ -218,5 +348,11 @@ class QuestionLabirinActivity : AppCompatActivity() {
             dialog.dismiss()
         }
         dialog.show()
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, ExpertDetailActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
