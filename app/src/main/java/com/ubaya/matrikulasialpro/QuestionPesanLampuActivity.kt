@@ -8,16 +8,22 @@ import android.graphics.drawable.ColorDrawable
 import android.icu.text.ConstrainedFieldPosition
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.Window
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.DefaultPlayerUiController
 import com.ubaya.matrikulasialpro.databinding.ActivityQuestionPesanLampuBinding
 import com.ubaya.matrikulasialpro.databinding.ActivityQuestionVideoBinding
+import org.json.JSONObject
 
 class QuestionPesanLampuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityQuestionPesanLampuBinding
@@ -321,24 +327,48 @@ class QuestionPesanLampuActivity : AppCompatActivity() {
 
         buttonBerikutnya.setOnClickListener {
             GlobalData.ClearJawaban()
+            var intent = Intent(this, QuestionPesanLampuActivity::class.java)
             if (namaSoal == "Pesan Lampu part 1"){
                 if(GlobalData.levelTertinggiUser == 2){
                     if (GlobalData.noSoalTertinggiUser < 5){
                         GlobalData.noSoalTertinggiUser = 5
                     }
                 }
-                val intent = Intent(this, QuestionPesanLampuActivity::class.java)
+                intent = Intent(this, QuestionPesanLampuActivity::class.java)
                 intent.putExtra(EXTRA_NAMASOAL, "Pesan Lampu part 2")
-                startActivity(intent)
             } else if (namaSoal == "Pesan Lampu part 2"){
                 if(GlobalData.levelTertinggiUser == 2){
                     GlobalData.levelTertinggiUser = 3
                     GlobalData.noSoalTertinggiUser = 1
                 }
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+                intent = Intent(this, MainActivity::class.java)
             }
-            finish()
+            val queue = Volley.newRequestQueue(this)
+            val url = "http://192.168.1.176/tugas_akhir/updateLevelSoalUser_matrikulasialpro.php"
+            val stringRequest = object : StringRequest(
+                Request.Method.POST, url,
+                Response.Listener {
+                    Log.d("checkparams", it)
+                    val obj = JSONObject(it)
+                    if (obj.getString("result") == "OK"){
+                        Toast.makeText(this, "UPDATE SOAL LEVEL BERHASIL", Toast.LENGTH_SHORT).show()
+                        dialog.dismiss()
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Toast.makeText(this, "UPDATE SOAL LEVEL GAGAL", Toast.LENGTH_SHORT).show()
+                    }
+                },
+                Response.ErrorListener {
+                    Log.d("paramserror", it.message.toString())
+                }
+            ){
+                override fun getParams(): MutableMap<String, String> {
+                    return hashMapOf("username" to GlobalData.user.username, "levels_tertinggi" to GlobalData.levelTertinggiUser.toString(),
+                        "no_soal_tertinggi" to GlobalData.noSoalTertinggiUser.toString())
+                }
+            }
+            queue.add(stringRequest)
         }
         dialog.show()
     }

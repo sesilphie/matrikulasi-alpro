@@ -14,13 +14,19 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import android.view.Window
 import android.widget.*
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.DefaultPlayerUiController
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
+import org.json.JSONObject
 
 class QuestionVideoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityQuestionVideoBinding
@@ -324,44 +330,66 @@ class QuestionVideoActivity : AppCompatActivity() {
 
         buttonBerikutnya.setOnClickListener {
             GlobalData.ClearJawaban()
+            var intent = Intent(this, QuestionVideoActivity::class.java)
             if (namaSoal == "Mainan Baru part 1"){
                 if(GlobalData.levelTertinggiUser == 0){
                     if (GlobalData.noSoalTertinggiUser < 5){
                         GlobalData.noSoalTertinggiUser = 5
                     }
                 }
-                val intent = Intent(this, QuestionMainanBaruPart2Actvity::class.java)
+                intent = Intent(this, QuestionMainanBaruPart2Actvity::class.java)
                 intent.putExtra(EXTRA_NAMASOAL, "Mainan Baru part 2")
-                startActivity(intent)
             } else if (namaSoal == "Turnamen Catur part 1"){
                 if(GlobalData.levelTertinggiUser == 3){
                     if (GlobalData.noSoalTertinggiUser < 3){
                         GlobalData.noSoalTertinggiUser = 3
                     }
                 }
-                val intent = Intent(this, QuestionVideoActivity::class.java)
+                intent = Intent(this, QuestionVideoActivity::class.java)
                 intent.putExtra(EXTRA_NAMASOAL, "Turnamen Catur part 2")
-                startActivity(intent)
             } else if (namaSoal == "Turnamen Catur part 2"){
                 if(GlobalData.levelTertinggiUser == 3){
                     if (GlobalData.noSoalTertinggiUser < 4){
                         GlobalData.noSoalTertinggiUser = 4
                     }
                 }
-                val intent = Intent(this, QuestionKatakAndRobotActivity::class.java)
+                intent = Intent(this, QuestionKatakAndRobotActivity::class.java)
                 intent.putExtra(EXTRA_NAMASOAL, "Katak")
-                startActivity(intent)
             } else if (namaSoal == "Turnamen Catur part 3"){
                 if(GlobalData.levelTertinggiUser == 3){
                     if (GlobalData.noSoalTertinggiUser < 6){
                         GlobalData.noSoalTertinggiUser = 6
                     }
                 }
-                val intent = Intent(this, QuestionKatakAndRobotActivity::class.java)
+                intent = Intent(this, QuestionKatakAndRobotActivity::class.java)
                 intent.putExtra(EXTRA_NAMASOAL, "Robby Si Robot")
-                startActivity(intent)
             }
-            finish()
+            val queue = Volley.newRequestQueue(this)
+            val url = "http://192.168.1.176/tugas_akhir/updateLevelSoalUser_matrikulasialpro.php"
+            val stringRequest = object : StringRequest(
+                Request.Method.POST, url,
+                Response.Listener {
+                    Log.d("checkparams", it)
+                    val obj = JSONObject(it)
+                    if (obj.getString("result") == "OK"){
+                        Toast.makeText(this, "UPDATE SOAL LEVEL BERHASIL", Toast.LENGTH_SHORT).show()
+                        dialog.dismiss()
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Toast.makeText(this, "UPDATE SOAL LEVEL GAGAL", Toast.LENGTH_SHORT).show()
+                    }
+                },
+                Response.ErrorListener {
+                    Log.d("paramserror", it.message.toString())
+                }
+            ){
+                override fun getParams(): MutableMap<String, String> {
+                    return hashMapOf("username" to GlobalData.user.username, "levels_tertinggi" to GlobalData.levelTertinggiUser.toString(),
+                        "no_soal_tertinggi" to GlobalData.noSoalTertinggiUser.toString())
+                }
+            }
+            queue.add(stringRequest)
         }
         dialog.show()
     }

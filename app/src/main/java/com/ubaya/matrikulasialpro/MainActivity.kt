@@ -20,6 +20,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.textNamaUsers.text = GlobalData.user.name
+
         var progress_lvl0 = 0f
         var progress_lvl1 = 0f
         var progress_lvl2 = 0f

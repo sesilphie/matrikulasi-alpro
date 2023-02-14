@@ -1098,6 +1098,7 @@ object GlobalData {
         jumlahHalamanHint = 0
     }
 
+    var user = User("", "", "", "", 0, 0)
     var levelTertinggiUser = 0
     var noSoalTertinggiUser = 1
 }

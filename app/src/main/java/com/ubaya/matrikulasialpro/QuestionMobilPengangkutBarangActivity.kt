@@ -7,11 +7,17 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.Window
 import android.widget.*
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.ubaya.matrikulasialpro.databinding.ActivityQuestionMobilPengangkutBarangBinding
 import com.ubaya.matrikulasialpro.databinding.ActivityQuestionPesanLampuBinding
+import org.json.JSONObject
 
 class QuestionMobilPengangkutBarangActivity : AppCompatActivity() {
     private lateinit var binding: ActivityQuestionMobilPengangkutBarangBinding
@@ -287,9 +293,33 @@ class QuestionMobilPengangkutBarangActivity : AppCompatActivity() {
         buttonBerikutnya.setOnClickListener {
             GlobalData.ClearJawaban()
             GlobalData.noSoalTertinggiUser = 9
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+            val queue = Volley.newRequestQueue(this)
+            val url = "http://192.168.1.176/tugas_akhir/updateLevelSoalUser_matrikulasialpro.php"
+            val stringRequest = object : StringRequest(
+                Request.Method.POST, url,
+                Response.Listener {
+                    Log.d("checkparams", it)
+                    val obj = JSONObject(it)
+                    if (obj.getString("result") == "OK"){
+                        Toast.makeText(this, "UPDATE SOAL LEVEL BERHASIL", Toast.LENGTH_SHORT).show()
+                        dialog.dismiss()
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Toast.makeText(this, "UPDATE SOAL LEVEL GAGAL", Toast.LENGTH_SHORT).show()
+                    }
+                },
+                Response.ErrorListener {
+                    Log.d("paramserror", it.message.toString())
+                }
+            ){
+                override fun getParams(): MutableMap<String, String> {
+                    return hashMapOf("username" to GlobalData.user.username, "levels_tertinggi" to GlobalData.levelTertinggiUser.toString(),
+                        "no_soal_tertinggi" to GlobalData.noSoalTertinggiUser.toString())
+                }
+            }
+            queue.add(stringRequest)
         }
         dialog.show()
     }

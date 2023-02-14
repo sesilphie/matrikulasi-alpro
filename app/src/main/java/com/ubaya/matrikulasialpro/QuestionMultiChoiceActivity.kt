@@ -7,11 +7,21 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.ubaya.matrikulasialpro.databinding.ActivityQuestionMultiChoiceBinding
 import android.util.TypedValue
 import android.view.View
 import android.view.Window
 import android.widget.*
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import org.json.JSONObject
+import android.R.string.no
+
+
+
 
 class QuestionMultiChoiceActivity : AppCompatActivity() {
     private lateinit var binding: ActivityQuestionMultiChoiceBinding
@@ -320,87 +330,104 @@ class QuestionMultiChoiceActivity : AppCompatActivity() {
 
         buttonBerikutnya.setOnClickListener {
             GlobalData.ClearJawaban()
+            var intent = Intent(this, QuestionMultiChoiceActivity::class.java)
             if (namaSoal == "Kurs Mata Uang"){
                 if(GlobalData.levelTertinggiUser == 0){
                     if (GlobalData.noSoalTertinggiUser < 2){
                         GlobalData.noSoalTertinggiUser = 2
                     }
                 }
-                val intent = Intent(this, QuestionUlanganAndPromosiActivity::class.java)
+                intent = Intent(this, QuestionUlanganAndPromosiActivity::class.java)
                 intent.putExtra(EXTRA_NAMASOAL, "Hasil Ulangan Harian")
-                startActivity(intent)
             } else if (namaSoal == "Kandang Bebek"){
                 if(GlobalData.levelTertinggiUser == 0){
                     if (GlobalData.noSoalTertinggiUser < 4){
                         GlobalData.noSoalTertinggiUser = 4
                     }
                 }
-                val intent = Intent(this, QuestionVideoActivity::class.java)
+                intent = Intent(this, QuestionVideoActivity::class.java)
                 intent.putExtra(EXTRA_NAMASOAL, "Mainan Baru part 1")
-                startActivity(intent)
             } else if (namaSoal == "Tugas Prakarya"){
                 if(GlobalData.levelTertinggiUser == 1){
                     if (GlobalData.noSoalTertinggiUser < 2){
                         GlobalData.noSoalTertinggiUser = 2
                     }
                 }
-                val intent = Intent(this, QuestionMultiChoiceActivity::class.java)
+                intent = Intent(this, QuestionMultiChoiceActivity::class.java)
                 intent.putExtra(EXTRA_NAMASOAL, "Eksperimen Tikus")
-                startActivity(intent)
             } else if (namaSoal == "Eksperimen Tikus"){
                 if(GlobalData.levelTertinggiUser == 1){
                     if (GlobalData.noSoalTertinggiUser < 3){
                         GlobalData.noSoalTertinggiUser = 3
                     }
                 }
-                val intent = Intent(this, QuestionMultiChoiceActivity::class.java)
+                intent = Intent(this, QuestionMultiChoiceActivity::class.java)
                 intent.putExtra(EXTRA_NAMASOAL, "Bakteri")
-                startActivity(intent)
             } else if (namaSoal == "Bakteri"){
                 if(GlobalData.levelTertinggiUser == 1){
                     if (GlobalData.noSoalTertinggiUser < 4){
                         GlobalData.noSoalTertinggiUser = 4
                     }
                 }
-                val intent = Intent(this, QuestionMultiChoiceActivity::class.java)
+                intent = Intent(this, QuestionMultiChoiceActivity::class.java)
                 intent.putExtra(EXTRA_NAMASOAL, "Kantong Kelereng")
-                startActivity(intent)
             } else if (namaSoal == "Kantong Kelereng"){
                 if(GlobalData.levelTertinggiUser == 1){
                     GlobalData.levelTertinggiUser = 2
                     GlobalData.noSoalTertinggiUser = 1
                 }
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+                intent = Intent(this, MainActivity::class.java)
             } else if (namaSoal == "Belanja Tepung"){
                 if(GlobalData.levelTertinggiUser == 2){
                     if (GlobalData.noSoalTertinggiUser < 2){
                         GlobalData.noSoalTertinggiUser = 2
                     }
                 }
-                val intent = Intent(this, QuestionMultiChoiceActivity::class.java)
+                intent = Intent(this, QuestionMultiChoiceActivity::class.java)
                 intent.putExtra(EXTRA_NAMASOAL, "Alat Musik part 1")
-                startActivity(intent)
             } else if (namaSoal == "Alat Musik part 1"){
                 if(GlobalData.levelTertinggiUser == 2){
                     if (GlobalData.noSoalTertinggiUser < 3){
                         GlobalData.noSoalTertinggiUser = 3
                     }
                 }
-                val intent = Intent(this, QuestionMultiChoiceActivity::class.java)
+                intent = Intent(this, QuestionMultiChoiceActivity::class.java)
                 intent.putExtra(EXTRA_NAMASOAL, "Alat Musik part 2")
-                startActivity(intent)
             } else if (namaSoal == "Alat Musik part 2"){
                 if(GlobalData.levelTertinggiUser == 2){
                     if (GlobalData.noSoalTertinggiUser < 4){
                         GlobalData.noSoalTertinggiUser = 4
                     }
                 }
-                val intent = Intent(this, QuestionPesanLampuActivity::class.java)
+                intent = Intent(this, QuestionPesanLampuActivity::class.java)
                 intent.putExtra(EXTRA_NAMASOAL, "Pesan Lampu part 1")
-                startActivity(intent)
             }
-            finish()
+            val queue = Volley.newRequestQueue(this)
+            val url = "http://192.168.1.176/tugas_akhir/updateLevelSoalUser_matrikulasialpro.php"
+            val stringRequest = object : StringRequest(
+                Request.Method.POST, url,
+                Response.Listener {
+                    Log.d("checkparams", it)
+                    val obj = JSONObject(it)
+                    if (obj.getString("result") == "OK"){
+                        Toast.makeText(this, "UPDATE SOAL LEVEL BERHASIL", Toast.LENGTH_SHORT).show()
+                        dialog.dismiss()
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Toast.makeText(this, "UPDATE SOAL LEVEL GAGAL", Toast.LENGTH_SHORT).show()
+                    }
+                },
+                Response.ErrorListener {
+                    Log.d("paramserror", it.message.toString())
+                }
+            ){
+                override fun getParams(): MutableMap<String, String> {
+                    return hashMapOf("username" to GlobalData.user.username, "levels_tertinggi" to GlobalData.levelTertinggiUser.toString(),
+                    "no_soal_tertinggi" to GlobalData.noSoalTertinggiUser.toString())
+                }
+            }
+            queue.add(stringRequest)
         }
         dialog.show()
     }

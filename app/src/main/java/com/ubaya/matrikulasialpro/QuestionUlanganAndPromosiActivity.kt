@@ -12,9 +12,15 @@ import android.content.Intent
 
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.ColorDrawable
+import android.util.Log
 import android.view.View
 import android.view.Window
 import android.widget.*
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import org.json.JSONObject
 
 
 class QuestionUlanganAndPromosiActivity : AppCompatActivity() {
@@ -501,26 +507,50 @@ class QuestionUlanganAndPromosiActivity : AppCompatActivity() {
 
         buttonBerikutnya.setOnClickListener {
             GlobalData.ClearJawaban()
+            var intent = Intent(this, QuestionUlanganAndPromosiActivity::class.java)
             if (namaSoal == "Hasil Ulangan Harian"){
                 if(GlobalData.levelTertinggiUser == 0){
                     if (GlobalData.noSoalTertinggiUser < 3){
                         GlobalData.noSoalTertinggiUser = 3
                     }
                 }
-                val intent = Intent(this, QuestionMultiChoiceActivity::class.java)
+                intent = Intent(this, QuestionMultiChoiceActivity::class.java)
                 intent.putExtra(QuestionMultiChoiceActivity.EXTRA_NAMASOAL, "Kandang Bebek")
-                startActivity(intent)
             } else if (namaSoal == "Promosi Minuman"){
                 if(GlobalData.levelTertinggiUser == 3){
                     if (GlobalData.noSoalTertinggiUser < 2){
                         GlobalData.noSoalTertinggiUser = 2
                     }
                 }
-                val intent = Intent(this, QuestionVideoActivity::class.java)
+                intent = Intent(this, QuestionVideoActivity::class.java)
                 intent.putExtra(QuestionMultiChoiceActivity.EXTRA_NAMASOAL, "Turnamen Catur part 1")
-                startActivity(intent)
             }
-            finish()
+            val queue = Volley.newRequestQueue(this)
+            val url = "http://192.168.1.176/tugas_akhir/updateLevelSoalUser_matrikulasialpro.php"
+            val stringRequest = object : StringRequest(
+                Request.Method.POST, url,
+                Response.Listener {
+                    Log.d("checkparams", it)
+                    val obj = JSONObject(it)
+                    if (obj.getString("result") == "OK"){
+                        Toast.makeText(this, "UPDATE SOAL LEVEL BERHASIL", Toast.LENGTH_SHORT).show()
+                        dialog.dismiss()
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Toast.makeText(this, "UPDATE SOAL LEVEL GAGAL", Toast.LENGTH_SHORT).show()
+                    }
+                },
+                Response.ErrorListener {
+                    Log.d("paramserror", it.message.toString())
+                }
+            ){
+                override fun getParams(): MutableMap<String, String> {
+                    return hashMapOf("username" to GlobalData.user.username, "levels_tertinggi" to GlobalData.levelTertinggiUser.toString(),
+                        "no_soal_tertinggi" to GlobalData.noSoalTertinggiUser.toString())
+                }
+            }
+            queue.add(stringRequest)
         }
         dialog.show()
     }

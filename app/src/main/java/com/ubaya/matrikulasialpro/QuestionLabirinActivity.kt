@@ -7,16 +7,22 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.Window
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.DefaultPlayerUiController
 import com.ubaya.matrikulasialpro.databinding.ActivityQuestionLabirinBinding
 import com.ubaya.matrikulasialpro.databinding.ActivityQuestionPesanLampuBinding
+import org.json.JSONObject
 
 class QuestionLabirinActivity : AppCompatActivity() {
     private lateinit var binding: ActivityQuestionLabirinBinding
@@ -315,17 +321,43 @@ class QuestionLabirinActivity : AppCompatActivity() {
 
         buttonBerikutnya.setOnClickListener {
             GlobalData.ClearJawaban()
+            var intent = Intent(this, QuestionLabirinActivity::class.java)
             if (namaSoal == "Labirin") {
                 if(GlobalData.levelTertinggiUser == 3){
                     if (GlobalData.noSoalTertinggiUser < 8){
                         GlobalData.noSoalTertinggiUser = 8
                     }
                 }
-                val intent = Intent(this, QuestionMobilPengangkutBarangActivity::class.java)
+                intent = Intent(this, QuestionMobilPengangkutBarangActivity::class.java)
                 intent.putExtra(EXTRA_NAMASOAL, "Mobil Pengangkut Barang")
                 startActivity(intent)
             }
-            finish()
+            val queue = Volley.newRequestQueue(this)
+            val url = "http://192.168.1.176/tugas_akhir/updateLevelSoalUser_matrikulasialpro.php"
+            val stringRequest = object : StringRequest(
+                Request.Method.POST, url,
+                Response.Listener {
+                    Log.d("checkparams", it)
+                    val obj = JSONObject(it)
+                    if (obj.getString("result") == "OK"){
+                        Toast.makeText(this, "UPDATE SOAL LEVEL BERHASIL", Toast.LENGTH_SHORT).show()
+                        dialog.dismiss()
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Toast.makeText(this, "UPDATE SOAL LEVEL GAGAL", Toast.LENGTH_SHORT).show()
+                    }
+                },
+                Response.ErrorListener {
+                    Log.d("paramserror", it.message.toString())
+                }
+            ){
+                override fun getParams(): MutableMap<String, String> {
+                    return hashMapOf("username" to GlobalData.user.username, "levels_tertinggi" to GlobalData.levelTertinggiUser.toString(),
+                        "no_soal_tertinggi" to GlobalData.noSoalTertinggiUser.toString())
+                }
+            }
+            queue.add(stringRequest)
         }
         dialog.show()
     }
