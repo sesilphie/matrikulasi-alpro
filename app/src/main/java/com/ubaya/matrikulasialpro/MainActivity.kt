@@ -1,11 +1,13 @@
 package com.ubaya.matrikulasialpro
 
 import android.annotation.SuppressLint
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.ubaya.matrikulasialpro.databinding.ActivityMainBinding
 import com.ubaya.matrikulasialpro.databinding.ActivityRegisterBinding
 import kotlin.math.roundToInt
@@ -170,5 +172,16 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    override fun onBackPressed() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Keluar Aplikasi")
+        builder.setMessage("Apakah kamu ingin keluar aplikasi ini?")
+        builder.setPositiveButton("Keluar", { dialogInterface, i ->
+            finish()
+        })
+        builder.setNegativeButton("Batal",null)
+        builder.create().show()
     }
 }

@@ -435,7 +435,7 @@ class QuestionMainanBaruPart2Actvity : AppCompatActivity() {
                     Log.d("checkparams", it)
                     val obj = JSONObject(it)
                     if (obj.getString("result") == "OK"){
-                        Toast.makeText(this, "UPDATE SOAL LEVEL BERHASIL", Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(this, "UPDATE SOAL LEVEL BERHASIL", Toast.LENGTH_SHORT).show()
                         dialog.dismiss()
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)

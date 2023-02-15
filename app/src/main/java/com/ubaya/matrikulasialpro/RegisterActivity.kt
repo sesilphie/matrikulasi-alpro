@@ -51,7 +51,7 @@ class RegisterActivity : AppCompatActivity() {
                                 with (builder)
                                 {
                                     setTitle("Daftar Akun")
-                                    setMessage("Selamat, Anda berhasil membuat akun baru!")
+                                    setMessage("Selamat, Anda berhasil membuat Akun baru!")
                                     setPositiveButton("OK"){dialogInterface, i ->
                                         finish()
                                     }
@@ -60,7 +60,18 @@ class RegisterActivity : AppCompatActivity() {
                                 }
 
                             }else if (obj.getString("result") == "ERROR"){
-                                Toast.makeText(this, "Register User Gagal. " + obj.getString("message"), Toast.LENGTH_LONG).show()
+                                val builder = android.app.AlertDialog.Builder(this)
+                                with (builder)
+                                {
+                                    setTitle("Daftar Akun")
+                                    setMessage("Maaf, pendaftaran Akun Anda gagal. " + obj.getString("message"))
+                                    setPositiveButton("OK"){dialogInterface, i ->
+                                        dialogInterface.dismiss()
+                                    }
+                                    setCancelable(false)
+                                    create().show()
+                                }
+//                                Toast.makeText(this, "Register User Gagal. " + obj.getString("message"), Toast.LENGTH_LONG).show()
                             }
                         },
                         Response.ErrorListener {
@@ -74,7 +85,18 @@ class RegisterActivity : AppCompatActivity() {
                     }
                     queue.add(stringRequest)
                 } else{
-                    Toast.makeText(this, "Password dan Confirm Password Anda tidak cocok. Pastikan password dan Confirm Password Anda sama", Toast.LENGTH_SHORT).show()
+                    val builder = android.app.AlertDialog.Builder(this)
+                    with (builder)
+                    {
+                        setTitle("Daftar Akun")
+                        setMessage("Pastikan password dan Confirm Password Anda sama")
+                        setPositiveButton("OK"){dialogInterface, i ->
+                            dialogInterface.dismiss()
+                        }
+                        setCancelable(false)
+                        create().show()
+                    }
+//                    Toast.makeText(this, "Password dan Confirm Password Anda tidak cocok. Pastikan password dan Confirm Password Anda sama", Toast.LENGTH_SHORT).show()
                 }
             }
         }

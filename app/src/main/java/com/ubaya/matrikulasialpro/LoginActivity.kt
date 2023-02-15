@@ -45,15 +45,15 @@ class LoginActivity : AppCompatActivity() {
                                 GlobalData.user = User(getString("username"), getString("name"), getString("email"),
                                     getString("password"), getInt("levels_tertinggi"), getInt("no_soal_tertinggi"))
                             }
-                            Toast.makeText(this, "LOGIN SUCCESS", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "LOGIN BERHASIL", Toast.LENGTH_SHORT).show()
 
                             GlobalData.levelTertinggiUser = GlobalData.user.levels_tertinggi
                             GlobalData.noSoalTertinggiUser = GlobalData.user.no_soal_tertinggi
                             val intent = Intent(this, MainActivity::class.java)
                             startActivity(intent)
-                            //finish()
+                            finish()
                         } else {
-                            Toast.makeText(this, "LOGIN FAILED. Username or Password is wrong", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "LOGIN GAGAL. Username atau Password Anda Salah", Toast.LENGTH_SHORT).show()
                         }
                     },
                     Response.ErrorListener {

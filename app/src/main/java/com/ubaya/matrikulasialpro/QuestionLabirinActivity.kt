@@ -330,7 +330,6 @@ class QuestionLabirinActivity : AppCompatActivity() {
                 }
                 intent = Intent(this, QuestionMobilPengangkutBarangActivity::class.java)
                 intent.putExtra(EXTRA_NAMASOAL, "Mobil Pengangkut Barang")
-                startActivity(intent)
             }
             val queue = Volley.newRequestQueue(this)
             val url = "http://192.168.1.176/tugas_akhir/updateLevelSoalUser_matrikulasialpro.php"
@@ -340,7 +339,7 @@ class QuestionLabirinActivity : AppCompatActivity() {
                     Log.d("checkparams", it)
                     val obj = JSONObject(it)
                     if (obj.getString("result") == "OK"){
-                        Toast.makeText(this, "UPDATE SOAL LEVEL BERHASIL", Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(this, "UPDATE SOAL LEVEL BERHASIL", Toast.LENGTH_SHORT).show()
                         dialog.dismiss()
                         startActivity(intent)
                         finish()
