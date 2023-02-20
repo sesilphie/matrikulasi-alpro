@@ -38,7 +38,7 @@ class QuestionMultiChoiceActivity : AppCompatActivity() {
         namaSoal = intent.getStringExtra(IntroductionDetailActivity.EXTRA_NAMASOAL).toString()
         var pilihanUser = ""
         binding.textJudul.text = namaSoal
-        for (question in GlobalData.QuestionModel){
+        for (question in GlobalData.questionModel){
             if (namaSoal == question.namaSoal){
                 if (namaSoal == "Belanja Tepung"){
                     //mengubah ukuran gambar dalam dp
@@ -403,14 +403,13 @@ class QuestionMultiChoiceActivity : AppCompatActivity() {
                 intent.putExtra(EXTRA_NAMASOAL, "Pesan Lampu part 1")
             }
             val queue = Volley.newRequestQueue(this)
-            val url = "http://192.168.1.176/tugas_akhir/updateLevelSoalUser_matrikulasialpro.php"
+            val url = "https://matrikulasi-alpro.000webhostapp.com/updateLevelSoalUser_matrikulasiAlpro.php"
             val stringRequest = object : StringRequest(
                 Request.Method.POST, url,
                 Response.Listener {
                     Log.d("checkparams", it)
                     val obj = JSONObject(it)
                     if (obj.getString("result") == "OK"){
-//                        Toast.makeText(this, "UPDATE SOAL LEVEL BERHASIL", Toast.LENGTH_SHORT).show()
                         dialog.dismiss()
                         startActivity(intent)
                         finish()

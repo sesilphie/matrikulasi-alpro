@@ -172,6 +172,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+        binding.buttonKredit.setOnClickListener {
+            val intent = Intent(this, CreditActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onBackPressed() {

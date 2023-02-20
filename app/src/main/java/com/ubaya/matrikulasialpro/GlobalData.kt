@@ -1,7 +1,7 @@
 package com.ubaya.matrikulasialpro
 
 object GlobalData {
-    val QuestionModel = arrayOf (
+    val questionModel = arrayOf (
         QuestionModel("Kurs Mata Uang",
             R.drawable.intro_kursmatauang,
             "Terdapat kurs mata uang di planet bebek sebagai berikut: " +
@@ -181,7 +181,7 @@ object GlobalData {
             "C, D, D, A, C")
     )
 
-    val QuestionKatakAndRobot = arrayOf(
+    val questionKatakAndRobot = arrayOf(
         QuestionKatakAndRobot("Katak",
             "Seekor katak suka melompat-lompat. Terdapat 8 petak yang diberi nomor dari 1 s.d. 8. Setiap petak berisi 1 kotak " +
                     "yang ditandai dengan salah satu dari tiga aturan melompat.\n" +

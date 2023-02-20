@@ -33,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Harap menginputkan password Anda", Toast.LENGTH_SHORT).show()
             } else{
                 val queue = Volley.newRequestQueue(this)
-                val url = "http://192.168.1.176/tugas_akhir/login_matrikulasiAlpro.php"
+                val url = "https://matrikulasi-alpro.000webhostapp.com/login_matrikulasiAlpro.php"
                 val stringRequest = object : StringRequest(
                     Request.Method.POST, url,
                     Response.Listener {

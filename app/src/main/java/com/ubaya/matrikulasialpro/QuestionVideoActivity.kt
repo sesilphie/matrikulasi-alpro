@@ -73,7 +73,7 @@ class QuestionVideoActivity : AppCompatActivity() {
 
         binding.youtubePlayerView.initialize(listener, options)
 
-        for (question in GlobalData.QuestionModel) {
+        for (question in GlobalData.questionModel) {
             if (namaSoal == question.namaSoal) {
 
                 binding.textSoalVideo.text = question.pertanyaan
@@ -365,14 +365,13 @@ class QuestionVideoActivity : AppCompatActivity() {
                 intent.putExtra(EXTRA_NAMASOAL, "Robby Si Robot")
             }
             val queue = Volley.newRequestQueue(this)
-            val url = "http://192.168.1.176/tugas_akhir/updateLevelSoalUser_matrikulasialpro.php"
+            val url = "https://matrikulasi-alpro.000webhostapp.com/updateLevelSoalUser_matrikulasiAlpro.php"
             val stringRequest = object : StringRequest(
                 Request.Method.POST, url,
                 Response.Listener {
                     Log.d("checkparams", it)
                     val obj = JSONObject(it)
                     if (obj.getString("result") == "OK"){
-//                        Toast.makeText(this, "UPDATE SOAL LEVEL BERHASIL", Toast.LENGTH_SHORT).show()
                         dialog.dismiss()
                         startActivity(intent)
                         finish()

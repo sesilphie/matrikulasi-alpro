@@ -38,7 +38,7 @@ class QuestionKatakAndRobotActivity : AppCompatActivity() {
 
         var pilihanUser = ""
 
-        for (question in GlobalData.QuestionKatakAndRobot) {
+        for (question in GlobalData.questionKatakAndRobot) {
             if (namaSoal == question.namaSoal) {
                 if(namaSoal == "Robby Si Robot"){
                     binding.textSoal1.text = " "
@@ -368,7 +368,7 @@ class QuestionKatakAndRobotActivity : AppCompatActivity() {
             intent.putExtra(EXTRA_NAMASOAL, "Labirin")
         }
             val queue = Volley.newRequestQueue(this)
-            val url = "http://192.168.1.176/tugas_akhir/updateLevelSoalUser_matrikulasialpro.php"
+            val url = "https://matrikulasi-alpro.000webhostapp.com/updateLevelSoalUser_matrikulasiAlpro.php"
             val stringRequest = object : StringRequest(
                 Request.Method.POST, url,
                 Response.Listener {

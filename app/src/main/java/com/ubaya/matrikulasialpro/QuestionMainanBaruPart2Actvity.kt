@@ -428,7 +428,7 @@ class QuestionMainanBaruPart2Actvity : AppCompatActivity() {
                 }
             }
             val queue = Volley.newRequestQueue(this)
-            val url = "http://192.168.1.176/tugas_akhir/updateLevelSoalUser_matrikulasialpro.php"
+            val url = "https://matrikulasi-alpro.000webhostapp.com/updateLevelSoalUser_matrikulasiAlpro.php"
             val stringRequest = object : StringRequest(
                 Request.Method.POST, url,
                 Response.Listener {
